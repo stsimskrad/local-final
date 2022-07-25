@@ -1,11 +1,11 @@
 <template>
-    <b-modal  @ok="create($event)" id="warning" title="Group" no-close-on-backdrop centered>
+    <b-modal v-model="showModal" @ok="create" title="Group" no-close-on-backdrop centered>
         <b-form class="customform">
             <div class="row p-2">
                 <div class="col-md-12">
                     <label>Year From: <span v-if="errors.from" class="haveerror">({{ errors.from[0] }})</span></label>
                     <date-picker
-                        v-model="from"
+                        v-model:value="from"
                         type="year" format="YYYY"
                         lang="en"
                         placeholder="Select Year"
@@ -54,7 +54,9 @@
                 is_regular: false,
                 is_active: true,
                 from: '',
-                semester: ''
+                semester: '',
+                showModal: false,
+                form : {}
             }
         },
         computed: {
@@ -71,30 +73,45 @@
         },
 
         methods: {
-            create(evt){
-                evt.preventDefault();
-                axios.post(this.currentUrl + '/request/benefit/storegroup',{
+            set(){
+                this.showModal = true;
+            },
+
+            create(){
+
+                this.form = this.$inertia.form({
                     academic_year: (this.from) ? this.academic_year : '',
                     semester_id: this.semester.id,
                     is_regular: this.is_regular,
                     is_active: this.is_active,
                     editable: false
-                })
-                .then(response => {
-                    this.$emit('status', response.data);
-                    this.semester_id = '';
-                    this.is_regular = '';
-                    this.is_active = '';
-                    this.$bvModal.hide("warning")
-                    Vue.$toast.success('<strong>Successfully Created</strong>', {
-                        position: 'bottom-right'
-                    });
-                })
-                .catch(error => {
-                    if (error.response.status == 422) {
-                        this.errors = error.response.data.errors;
-                    }
+                }),
+
+                this.form.put('/benefits/update',{
+                    preserveScroll: true,
+                    onSuccess: (response) => {}
                 });
+
+
+                // axios.post(this.currentUrl + '/request/benefit/storegroup',{
+                //     academic_year: (this.from) ? this.academic_year : '',
+                //     semester_id: this.semester.id,
+                //     is_regular: this.is_regular,
+                //     is_active: this.is_active,
+                //     editable: false
+                // })
+                // .then(response => {
+                //     this.$emit('status', response.data);
+                //     this.semester_id = '';
+                //     this.is_regular = '';
+                //     this.is_active = '';
+                //     this.showModal = false;
+                // })
+                // .catch(error => {
+                //     if (error.response.status == 422) {
+                //         this.errors = error.response.data.errors;
+                //     }
+                // });
             },
         }
     }

@@ -83,7 +83,7 @@
                 <div class="col-md-12 mt-n2">
 
                     <div class="card mb-3">
-                        <div class="card-body mt-n1" style="height: 210px;">
+                        <div v-if="academic_year != null" class="card-body mt-n1" style="height: 210px;">
                             <div class="card border shadow-none">
                                 <div class="p-1">
                                     <button type="button" class="float-end btn btn-sm w-sm btn-light mt-1 me-1">Set
@@ -177,16 +177,19 @@
             </div>
         </div>
     </div>
+    <Group @status="fetch" :dropdowns="dropdowns" ref="group"/>
 </template>
 <script>
 import Header from "@/Shared/Header.vue";
 import Home from './Sections/Home.vue';
+import Group from './Modals/Group.vue';
 import Endorsement from './Sections/Endorsement.vue'
 import Reimbursement from './Sections/Reimbursement.vue';
 import TraceRequest from './Sections/TraceRequest.vue';
 import Request from './Sections/Request.vue';
     export default {
-        components: { Header, Home, Reimbursement, Endorsement, Request, TraceRequest },
+        props: ['dropdowns'],
+        components: { Header, Home, Reimbursement, Endorsement, Request, TraceRequest, Group },
         data() {
             return {
                 currentUrl: window.location.origin,
@@ -230,8 +233,7 @@ import Request from './Sections/Request.vue';
                         this.staffs = response.data.staffs;
                         this.academic_year = response.data.academic_year;
                         this.qualifiers = response.data.qualifiers;
-                        // this.schools = response.data.schools;
-                        // this.courses = response.data.courses;
+                        (this.academic_year == null) ? this.$refs.group.set() : '';
                     })
                     .catch(err => console.log(err));
             },

@@ -33,6 +33,8 @@ class UserRequest extends FormRequest
             'is_active' => 'sometimes|required',
             'mobile' => 'sometimes|required|numeric|unique:user_profiles,mobile,'.$this->profile_id,
             'img' => 'nullable|image64:jpeg,jpg,png',
+            'region_code' => 'sometimes|required',
+            'province_code' => 'sometimes|required'
         ];
     }
 }

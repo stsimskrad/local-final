@@ -5,13 +5,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div>
-                            <p class="text-muted mb-1">Available Balance</p>
+                            <p class="text-muted mb-1">teste</p>
                             <h5>$ 9148.23</h5>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-4 mt-sm-0">
-                            <p class="text-muted mb-1">Since last month</p>
+                            <p class="text-muted mb-1">text</p>
                             <h5> + $ 248.35 <span
                                     class="badge bg-success ms-1 align-bottom">+ 1.3
                                     %</span></h5>

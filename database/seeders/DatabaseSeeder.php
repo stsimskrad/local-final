@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@dost.com',
             'password' => bcrypt('dost9ict'),
             'role' => 'Super Administrator',
-            'is_active' => 1,
+            'is_active' => 0,
             'created_at' => now(),
             'updated_at' => now(),
             'email_verified_at' => now(),
@@ -34,5 +34,11 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        // $this->call(AllotmentsTableSeeder::class);
+        // $this->call(AllotmentListsTableSeeder::class);
+        // $this->call(AllotmentBalancesTableSeeder::class);
+        // $this->call(DisbursementsTableSeeder::class);
+        $this->call(ListPriviligesTableSeeder::class);
+        $this->call(ListCoursesTableSeeder::class);
     }
 }

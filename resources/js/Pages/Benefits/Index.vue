@@ -129,12 +129,14 @@
             </div>
         </div>
     </div>
+    <Group @status="message" :dropdowns="dropdowns" ref="group"/>
 </template>
 <script>
+import Group from './Modals/Group.vue';
 import Header from "@/Shared/Header.vue";
 import Main from "./Main.vue";
 export default {
-    components: { Header, Main },
+    components: { Header, Main, Group },
     inject: ['height'],
     props: ['dropdowns'],
     data() {
@@ -200,7 +202,7 @@ export default {
             })
             .then(response => {
                 this.latest = response.data;
-                (this.latest == 'empty') ? this.$bvModal.show("warning") : '';
+                (this.latest == 'empty') ? this.$refs.group.set() : '';
             })
             .catch(err => console.log(err));
         },

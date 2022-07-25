@@ -78,6 +78,25 @@ class GroupController extends Controller
         return $data;
     }
 
+    public function update(Request $request){
+        $data = \DB::transaction(function () use ($request){
+            if($request->editable){
+                $data = FinancialGroup::findOrFail($request->id);
+                $data->update($request->except('editable'));
+                return $data;
+            }else{
+                $data = FinancialGroup::create($request->all());
+                return $data;
+            }
+        });
+
+        return back()->with([
+            'message' => 'Group created successfully. Thanks',
+            'data' =>  $data,
+            'type' => 'bxs-check-circle'
+        ]); 
+    }
+
     public function show($id){
         $data = FinancialGroup::with('months.releases.scholars.scholar:id,profile_id','months.releases.scholars.scholar.profile:firstname,lastname,middlename,id','months.releases.scholars.lists.benefit')
         ->with('lists.scholar:id,profile_id','lists.scholar.profile:id,lastname,firstname,middlename')
@@ -254,6 +273,7 @@ class GroupController extends Controller
         $data = FinancialGroup::with('months.releases.scholars.scholar:id,profile_id','months.releases.scholars.scholar.profile:firstname,lastname,middlename,id','months.releases.scholars.lists.benefit')
         ->with('lists.scholar:id,profile_id','lists.scholar.profile:id,lastname,firstname,middlename')
         ->with('semester')->where('id',$id)->first();
+
         return new GroupResource($data);
     }
 }

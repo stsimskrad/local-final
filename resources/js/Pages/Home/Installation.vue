@@ -62,6 +62,28 @@
                                     </div>
                                 </td>
                             </tr>
+                             <tr>
+                                <td>
+                                    <div class="avatar-sm">
+                                        <span class="avatar-title rounded-circle bg-soft bg-primary text-primary font-size-24">
+                                            <i class="bx bxs-school"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-0"><a href="javascript: void(0);" class="text-dark">Lists of Schools</a></h5>
+                                    <small  v-for="(list,name,index) in lists" v-bind:key="index" ><span v-if="index != 0">,</span> {{name}} : {{list.count }} </small>
+                                </td>
+                                <td>
+                                    <div class="text-center" v-if="!downloaded3">
+                                        <button v-if="s" :disabled="low" @click="downloadSchools" type="button" class="btn btn-sm btn-label btn-primary"><i class="bx bx-download label-icon"></i> Download </button>
+                                        <button v-else type="button" class="btn btn-sm btn-label btn-warning"><i class="bx bx-loader-circle bx-spin label-icon"></i> Downloading </button>
+                                    </div>
+                                    <div class="text-center" v-else>
+                                       <span class="badge bg-success">Downloaded</span>
+                                    </div>
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>
@@ -92,6 +114,7 @@ export default {
             addresses : [],
             regions: [],
             agencies: [],
+            schools: [],
             isLoading: false,
             fullPage: true,
             lists : [],
@@ -99,8 +122,10 @@ export default {
             show : false,
             r: true,
             l: true,
+            s: true,
             downloaded1: false,
             downloaded2: false,
+            downloaded3: false,
             form: this.$inertia.form({
                 id: '',
                 is_active: 1,
@@ -154,10 +179,20 @@ export default {
             axios.get(this.currentUrl + '/sync/lists/download/all')
             .then(response => {
                 this.l = true;
-                this.show = true;
                 this.downloaded2 = true;
                 this.fetchLists();
 
+            })
+            .catch(err => console.log(err));
+        },
+
+        downloadSchools(category, index) {
+            this.loading3 = true;
+            axios.get(this.currentUrl + '/sync/schools/download/local')
+            .then(response => {
+                this.s = true;
+                this.show = true;
+                this.downloaded3 = true;
             })
             .catch(err => console.log(err));
         },

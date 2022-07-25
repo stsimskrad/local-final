@@ -13,7 +13,7 @@ class EndorseController extends Controller
     public function index(){
         $region_code = $this->agency();
         try{
-            $url = 'http://stsims.main/api/endorsements/'.$region_code;
+            $url = 'http://main.test/api/endorsements/'.$region_code;
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,

@@ -94,14 +94,16 @@
             <b-button @click="hide()" variant="secondary" block>Cancel</b-button>
             <b-button @click="create('ok')" variant="primary" :disabled="form.processing" block>Save</b-button>
         </template>
+        <Loading :active="isLoading"  :can-cancel="true"  :on-cancel="onCancel"  loader="dots" background-color="black" :is-full-page="fullPage"></Loading>
     </b-modal>
 </template>
 
 <script>
+    import Loading from 'vue3-loading-overlay';
     import myUpload from 'vue-image-crop-upload/upload-3.vue';
     import Multiselect from '@suadelabs/vue3-multiselect';
     export default {
-        components: { myUpload , Multiselect },
+        components: { myUpload , Multiselect, Loading },
         data() {
             return {
                 currentUrl: window.location.origin,
@@ -118,7 +120,7 @@
                     avatar: 'avatar.jpg',
                     img: '',
                     profile_id: '',
-                    editable: false
+                    editable: false,
                 }),
                 showModal: false,
                 photo: {
@@ -133,6 +135,8 @@
                 headers: {
                     smail: '*_~'
                 },
+                isLoading: false,
+                fullPage: true,
             }
         },
         watch: {
@@ -157,6 +161,7 @@
             },
 
             create() {
+                this.isLoading = true; 
                 if(!this.form.editable){
                     this.form.post('/users',{
                         preserveScroll: true,
@@ -192,6 +197,7 @@
             hide(){
                 this.form.reset().clearErrors();
                 this.showModal = false;
+                this.isLoading = false; 
             },
 
             toggleShow() {

@@ -26,6 +26,7 @@ class IndexResource extends JsonResource
             'is_completed' => $this->is_completed,
             'is_undergrad' => $this->is_undergrad,
             'profile' => new ProfileResource($this->profile), 
+            'user' => ($this->profile->user != null) ? new UserResource($this->profile->user) : null,
             'address' => new AddressResource($this->profile->address),
             'education' =>  new EducationResource($this->education),
             'created_at' => $this->created_at,

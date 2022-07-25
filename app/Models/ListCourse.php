@@ -10,7 +10,7 @@ class ListCourse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'abbreviation', 'others'
+        'name', 'abbreviation', 'others', 'is_active'
     ];
     
     public function scholars()
@@ -23,10 +23,10 @@ class ListCourse extends Model
         return $this->hasMany('App\Models\SchoolCourse', 'course_id');
     } 
     
-    public function getNameAttribute($value)
-    {
-        return ucwords(strtolower($value));
-    }
+    // public function getNameAttribute($value)
+    // {
+    //     return ucwords(strtolower($value));
+    // }
 
     public function getUpdatedAtAttribute($value)
     {

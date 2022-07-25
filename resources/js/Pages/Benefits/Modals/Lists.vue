@@ -45,6 +45,7 @@
 
         methods: {
             set(data,height){
+                console.log(data);
                 this.lists = data;
                 this.height = height;
                 this.showModal = true;

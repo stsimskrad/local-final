@@ -27,7 +27,11 @@ createInertiaApp({
                     count: Math.floor((window.innerHeight - 170) / 70),
                     count2: Math.floor(((window.innerHeight - 170) - 170) / 61),
                     count3: Math.floor(((window.innerHeight - 170) - 130) / 61),
+                    count4: Math.floor(((window.innerHeight - 170) - 100) / 50),
                     height: window.innerHeight - 170
+                },
+                mounted() {
+                    this.mixinMethod('vertical');
                 }
             })
             .use(plugin)

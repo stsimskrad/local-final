@@ -3,6 +3,9 @@
         <Vertical v-if="layoutType === 'vertical'">
             <slot/>
         </Vertical>
+        <Horizontal v-if="layoutType === 'horizontal'">
+            <slot/>
+        </Horizontal>
         <b-modal v-model="message" hide-footer hide-header no-close-on-backdrop centered>
             <div class="p-4">
                 <div class="text-center">
@@ -27,8 +30,9 @@
 
 <script>
 import Vertical from "@/Shared/Layout/Vertical/Index.vue";
+import Horizontal from "@/Shared/Layout/Horizontal/Index.vue";
 export default {
-    components: { Vertical },
+    components: { Vertical, Horizontal },
     computed: {
         layoutType() {
             return this.$root.layout?.type;

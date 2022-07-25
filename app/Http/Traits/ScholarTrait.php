@@ -39,7 +39,7 @@ trait ScholarTrait { //Storing Scholar
         if($data){
             if($request->type == 'endorsed'){
                 try{
-                    $url = 'http://stsims.main/api/endorsement/update';
+                    $url = 'http://main.test/api/endorsement/update';
                     $curl = curl_init();
                     curl_setopt_array($curl, array(
                     CURLOPT_URL => $url,
@@ -125,6 +125,24 @@ trait ScholarTrait { //Storing Scholar
             ->first();
             return new EvaluationResource($data);
         }   
+    }
+
+    public static function login($request){
+        $user = new User;
+        $user->password  = bcrypt('dost9ict');
+        $user->role = 'Scholar';
+        $user->email = $request->email;
+    
+        if($user->save()){
+            $profile = Profile::where('id',$request->id)->first();
+            $profile->user_id = $user->id;
+            $profile->email = $request->email;
+            $profile->save();
+        }
+
+        $data =  Scholar::with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay','profile.user')
+        ->with('program')->with('profile.user')->with('education.school.school','education.course')->where('profile_id',$request->id)->first();
+        return new IndexResource($data);
     }
 
 }

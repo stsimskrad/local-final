@@ -11,12 +11,13 @@ class ProfileResource extends JsonResource
         $info = json_decode($this->information);
 
         return [
+            'id' => $this->id,
             'email' => $this->email,
             'avatar' => ($this->user) ? $this->user->avatar : 'avatar.jpg',
             'gender' => $this->gender,
-            'firstname' => strtoupper($this->firstname),
-            'middlename' => strtoupper($this->middlename),
-            'lastname' =>strtoupper( $this->lastname),
+            'firstname' => ucwords(strtolower($this->firstname)),
+            'middlename' => ucwords(strtolower($this->middlename)),
+            'lastname' =>ucwords(strtolower( $this->lastname)),
             'birthday' => ($this->birthday == null) ? '' : $this->birthday,
             'suffix' => ($this->suffix == null) ? '' : $this->suffix,
             'gender' => ($this->gender == null) ? '' : $this->gender,

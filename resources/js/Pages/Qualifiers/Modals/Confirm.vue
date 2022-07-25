@@ -18,7 +18,7 @@
 <script>
     import Multiselect from '@suadelabs/vue3-multiselect';
     export default {
-        props: ['dropdowns','regions'],
+        // hide: ['dropdowns','regions'],
         components : { Multiselect },
         data(){
             return {

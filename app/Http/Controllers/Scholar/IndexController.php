@@ -22,7 +22,7 @@ class IndexController extends Controller
             $location = (!empty(json_decode($request->location))) ? json_decode($request->location) : NULL;
     
             $data = IndexResource::collection(
-                Scholar::with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay')
+                Scholar::with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay','profile.user')
                 ->with('program')->with('profile.user')->with('education.school.school','education.course')
                 ->when($info->keyword, function ($query, $keyword) {
                     $query->whereHas('profile',function ($query) use ($keyword) {
@@ -77,6 +77,9 @@ class IndexController extends Controller
                 break;
                 case 'true': 
                     return $this->true($request);
+                break;
+                case 'login':
+                    return $this->login($request);
                 break;
             }
         });

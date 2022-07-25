@@ -69,7 +69,7 @@ class User extends Authenticatable
     }
 
     public function scopeNew($query, $request){
-        $user = $query->create(array_merge($request, ['password' => 'dost9ict']));
+        $user = $query->create(array_merge($request, ['password' => bcrypt('dost9ict')]));
         $user->profile()->create($request);
         $user = $this->storeImage($request,$user->id);
         EmailNewAccount::dispatch($user->id)->delay(now()->addSeconds(10));
@@ -83,11 +83,6 @@ class User extends Authenticatable
 
     public function scopeMail($query, $request){
         
-    }
-
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
     }
 
     public function getUpdatedAtAttribute($value)

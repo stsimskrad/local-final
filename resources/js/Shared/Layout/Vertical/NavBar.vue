@@ -247,7 +247,7 @@
                        Settings
                     </b-dropdown-item>
                     <b-dropdown-divider></b-dropdown-divider>
-                    <Link href="logout" method="post" as="button" class="dropdown-item text-danger">
+                    <Link href="/logout" method="post" as="button" class="dropdown-item text-danger">
                         <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
                        Logout
                     </Link>

@@ -5,15 +5,24 @@ namespace App\Http\Controllers\Home;
 use App\Models\User;
 use App\Models\Scholar;
 use App\Models\Qualifier;
-use App\Models\FinancialGroup;
+use App\Models\Group;
 use App\Models\ScholarEnrollment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\Scholar\IndexResource;
 
 class IndexController extends Controller
 {   
-    public function index(Request $request)
+    public function index(){        
+        if(\Auth::user()->role == 'Scholar'){
+            return inertia('Scholarship/Index');
+        }else{
+            return inertia('Home/Index');
+        }
+    }
+
+    public function gege(Request $request)
     {   
         if($request->type == 'lists'){
             $array = [
@@ -40,21 +49,25 @@ class IndexController extends Controller
     }
 
     public function academicyear(){
-        $group = FinancialGroup::with('semester')->where('is_active',1)->first();
-        $academic_year = $group->academic_year;
-        $semester_id = $group->semester_id;
-        $enrolled = ScholarEnrollment::whereHas('semester',function ($query) use ($academic_year,$semester_id) {
-            $query->where('academic_year',$academic_year)->where('semester_id',$semester_id);
-        })->count();
-        $ongoing = Scholar::whereHas('status',function ($query){
-            $query->where('type','ongoing');
-        })->count();
-        $data = [
-            'group' => $group,
-            'enrolled' => $enrolled,
-            'ongoing' => $ongoing
-        ];
-        return $data;
+        $group = Group::with('semester')->where('is_active',1)->first();
+        if($group) {
+            $academic_year = $group->academic_year;
+            $semester_id = $group->semester_id;
+            $enrolled = ScholarEnrollment::whereHas('semester',function ($query) use ($academic_year,$semester_id) {
+                $query->where('academic_year',$academic_year)->where('semester_id',$semester_id);
+            })->count();
+            $ongoing = Scholar::whereHas('status',function ($query){
+                $query->where('type','ongoing');
+            })->count();
+            $data = [
+                'group' => $group,
+                'enrolled' => $enrolled,
+                'ongoing' => $ongoing
+            ];
+            return $data;
+        }else{
+            return null;
+        }
     }
 
 

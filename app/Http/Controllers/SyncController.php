@@ -29,7 +29,7 @@ class SyncController extends Controller
 
         foreach($arrays as $array){
             try{
-                $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/location/'.$array;
+                $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/location/'.$array;
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
@@ -115,7 +115,7 @@ class SyncController extends Controller
 
     public function lists($type,$category){
         if($category == 'all'){
-            $arrays = ['agencies','dropdowns','courses','expenses','programs','benefits'];
+            $arrays = ['agencies','dropdowns','expenses','programs','benefits'];
         }else{
             $arrays = [];
             array_push($arrays,strtolower($category));
@@ -124,7 +124,7 @@ class SyncController extends Controller
 
         foreach($arrays as $array){
             try{
-                $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/'.$array;
+                $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/'.$array;
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
@@ -191,11 +191,11 @@ class SyncController extends Controller
                     'downloaded' => ListAgency::count(),
                     'count' => count($agencies)
                 ],
-                'Courses' => [
-                    'data' => ListCourse::all(),
-                    'downloaded' => ListCourse::count(),
-                    'count' => count($courses)
-                ],
+                // 'Courses' => [
+                //     'data' => ListCourse::all(),
+                //     'downloaded' => ListCourse::count(),
+                //     'count' => count($courses)
+                // ],
                 'Expenses' => [
                     'data' => ListExpense::all(),
                     'downloaded' => ListExpense::count(),
@@ -253,7 +253,7 @@ class SyncController extends Controller
         // }
 
         try{
-            $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/schools';
+            $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/schools';
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -346,7 +346,7 @@ class SyncController extends Controller
     }
 
     public function allSchools(){
-        $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/schools/all';
+        $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/schools/all';
         $curl = curl_init();
         curl_setopt_array($curl, array(
         CURLOPT_URL => $url,

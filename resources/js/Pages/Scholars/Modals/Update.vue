@@ -1,5 +1,5 @@
 <template>
-    <b-modal v-model="showModal" hide-footer title="Update Scholar" centered>
+    <b-modal @ok="create()"  v-model="showModal" title="Update Scholar" centered>
         <blockquote class="p-3 border-light border rounded">
             <div class="d-flex">
                 <div class="mr-3"><i class="bx bxs-quote-alt-left text-primary font-size-14"></i></div>
@@ -16,10 +16,10 @@
             </div>
         </blockquote>
 
-        <form @submit.prevent="submit" class="customform">
+        <b-form class="customform mb-2">
             <div class="row customerform">
                 <div class="col-md-12" v-if="!user.education.has_school">
-                    <label>School: <span v-if="errors.school_id" class="haveerror">({{ errors.school_id[0] }})</span></label>
+                    <label>School: <span v-if="errors.length > 0" class="haveerror">({{ errors[0].school_id }})</span></label>
                     <multiselect v-model="school" id="ajax" label="name" track-by="id"
                         placeholder="Search School" open-direction="bottom" :options="schools"
                         :searchable="true" 
@@ -29,7 +29,7 @@
                     </multiselect> 
                 </div>
                 <div class="col-md-12" v-if="!user.education.has_course">
-                    <label>Course: <span v-if="errors.course_id" class="haveerror">({{ errors.course_id[0] }})</span></label>
+                    <label>Course: <span v-if="errors.length > 0" class="haveerror">({{ errors[0].course_id }})</span></label>
                     <multiselect v-model="course" id="ajax" label="name" track-by="id"
                         placeholder="Search Course" open-direction="bottom" :options="courses"
                         :searchable="true" 
@@ -39,7 +39,7 @@
                     </multiselect> 
                 </div>
                 <div class="col-md-12" v-if="!user.education.has_level">
-                    <label>Level: <span v-if="errors.level_id" class="haveerror">({{ errors.level_id[0] }})</span></label>
+                    <label>Level: <span v-if="errors.length > 0" class="haveerror">({{ errors[0].level_id }})</span></label>
                     <multiselect 
                         v-model="level" 
                         id="ajax" 
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="col-md-12" v-if="user.status.name == 'Graduated' && has_award == true">
-                    <label>Award: <span v-if="errors.award_id" class="haveerror">({{ errors.award_id[0] }})</span></label>
+                    <label>Award: <span v-if="errors.length > 0" class="haveerror">({{ errors[0].award_id }})</span></label>
                     <multiselect 
                         v-model="award" 
                         id="ajax" 
@@ -72,11 +72,12 @@
                         :show-labels="false">
                     </multiselect> 
                 </div>
-                <div class="col-md-12 mt-4">
-                    <button type="submit" class="btn btn-info btn-sm btn-block waves-effect waves-light mb-4">UPDATE SCHOLAR</button>
-                </div>
             </div>
-        </form>
+        </b-form>
+        <template v-slot:footer>
+            <b-button @click="hide()" variant="secondary" block>Cancel</b-button>
+            <b-button @click="create('ok')" variant="primary" :disabled="form.processing" block>Save</b-button>
+        </template>
     </b-modal>
 </template>
 <script>
@@ -125,7 +126,11 @@
                 this.showModal = true;
             },
 
-            submit(){
+            hide(){
+                this.showModal = false;
+            },
+
+            create(){
                 let data = new FormData();
 
                 data.append('id', this.user.id);
@@ -143,6 +148,10 @@
                     forceFormData: true,
                     onSuccess: (response) => {
                         this.clear();
+                    },
+                    onError: (response) =>{
+                        this.errors.push(response);
+                        console.log(this.errors[0].course_id)
                     }
                 });
             },

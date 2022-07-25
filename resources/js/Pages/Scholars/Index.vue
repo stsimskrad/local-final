@@ -94,6 +94,7 @@
                                     <span v-else :class="'badge badge-pill badge-soft-'+user.status.color">{{user.status.name}}</span>
                                 </td>
                                 <td class="text-end">
+                                    <button type="button" @click="addUser(user)" class="bg-light btn btn-light me-1" v-if="user.user == null"><i class='bx text-primary bxs-user-plus'></i></button>
                                     <button type="button" @click="openFilter('update',user)" class="bg-light btn btn-light me-1" v-if="user.is_completed == 0"><i class='bx text-warning bxs-info-circle'></i></button>
                                     <Link :href="`/scholars/${user.code}`">
                                         <button type="button" class="bg-soft-info btn btn-light" style="margin-end: -10px;">
@@ -114,12 +115,14 @@
                 <FilterLocation :regions="regions"  @status="message" ref="location"/>
                 <FilterEducation @status="message" ref="education"/>
                 <Update :dropdowns="dropdowns" @status="message" ref="update"/>
+                <Login  @status="message" ref="login"/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Login from './Modals/Login.vue';
 import Update from './Modals/Update.vue';
 import FilterLocation from './Modals/FilterLocation.vue';
 import FilterEducation from './Modals/FilterEducation.vue';
@@ -129,7 +132,7 @@ import _ from 'lodash';
 
 export default {
     props: ['dropdowns','programs','regions'],
-    components : { Header, Pagination, FilterEducation, FilterLocation, Update },
+    components : { Header, Pagination, FilterEducation, FilterLocation, Update, Login },
     inject:['count2', 'height'],
     data() {
         return {
@@ -245,6 +248,11 @@ export default {
             this.$refs[type].set(val);
             this.editable = type;
         },
+        
+        addUser(user){
+            this.$refs.login.set(user);
+            this.editable = 'login';
+        },
 
         yr(){
             (this.show == false) ? this.show = true : this.show = false;
@@ -255,11 +263,11 @@ export default {
             if(!this.editable){
                 this.lists.splice(index,1);
             }else if(this.editable == 'location'){
-                    this.arr = list;
-                    this.fetch();
+                this.arr = list;
+                this.fetch();
             }else if(this.editable == 'education'){
-                    this.arr2 = list;
-                    this.fetch();
+                this.arr2 = list;
+                this.fetch();
             }else{
                 this.lists[index] = list;
             }

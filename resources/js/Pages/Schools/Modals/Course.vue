@@ -80,7 +80,7 @@ export default {
                 option: 'course'
             })
 
-            this.form.put('/schools/update',{
+            this.form.post('/schools',{
                 preserveScroll: true,
                 onSuccess: (response) => {
                     this.hide();
