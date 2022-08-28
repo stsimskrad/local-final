@@ -10,6 +10,7 @@ import VueApexCharts from "vue3-apexcharts";
 
 import Layout from "@/Shared/Layout/Layout";
 import myMixin from "@/Shared/Layout/layouts.mixin";
+import { times } from 'lodash';
 
 createInertiaApp({
     resolve: name => {
@@ -28,11 +29,12 @@ createInertiaApp({
                     count2: Math.floor(((window.innerHeight - 170) - 170) / 61),
                     count3: Math.floor(((window.innerHeight - 170) - 130) / 61),
                     count4: Math.floor(((window.innerHeight - 170) - 100) / 50),
-                    height: window.innerHeight - 170
+                    height: window.innerHeight - 170,
+                    height2: window.innerHeight - 150
                 },
-                mounted() {
-                    this.mixinMethod('vertical');
-                }
+                // mounted() {
+                //     (window.User.role == 'Scholar') ? this.mixinMethod('horizontal'): this.mixinMethod('vertical');
+                // }
             })
             .use(plugin)
             .use(BootstrapVue3, VueToast)
@@ -46,6 +48,6 @@ createInertiaApp({
 })
 
 InertiaProgress.init({
-    color: "red",
+    color: "blue",
     showSpinner: true,
-});
+})

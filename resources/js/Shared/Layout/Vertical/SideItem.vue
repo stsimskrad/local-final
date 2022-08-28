@@ -6,7 +6,7 @@
             <li class="menu-title" v-if="item.isTitle" :key="item.id">
                 {{ item.label }}
             </li>
-            <li v-if="!item.isTitle && !item.isLayout && (item.user.includes('Scholarship Coordinator'))" :key="item.id">
+            <li v-if="!item.isTitle && !item.isLayout && (item.user.includes($page.props.auth.data.role))" :key="item.id">
                 <a v-if="hasItems(item)" href="javascript:void(0);" class="is-parent" :class="{ 'has-arrow': !item.badge, 'has-dropdown': item.badge }">
                     <i :class="`bx ${item.icon}`" v-if="item.icon"></i>
                     <span>{{ item.label }}</span>

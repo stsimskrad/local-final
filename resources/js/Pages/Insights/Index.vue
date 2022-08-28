@@ -2,12 +2,35 @@
     <Header :title="title" :content="title" :items="items" />
     <div class="row g-3" style="margin-top: -33px;">
         <div class="col-xl-8">
-            <Count :lists="lists"/>
+            <Count :lists="lists" />
         </div>
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body" style="height: 137px;">
-                    s
+                    <div class="col-lg-12 align-self-center">
+                        <div class="text-lg-center mt-4 mt-lg-0">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div>
+                                        <p class="text-muted text-truncate mb-2"> Total Projects </p>
+                                        <h5 class="mb-0">48</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div>
+                                        <p class="text-muted text-truncate mb-2">Projects</p>
+                                        <h5 class="mb-0">40</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div>
+                                        <p class="text-muted text-truncate mb-2">Clients</p>
+                                        <h5 class="mb-0">18</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -15,13 +38,13 @@
         <div class="col-xl-8 mt-n2">
             <div class="card">
                 <div class="card-body" style="height: 440px;">
-                    <Lists data-simplebar style="height: 400px; overflow-y: auto; overflow-x: hidden;"/>
+                    <Lists data-simplebar style="height: 400px; overflow-y: auto; overflow-x: hidden;" />
                 </div>
             </div>
         </div>
         <div class="col-xl-4 mt-n2">
-           <div class="card">
-                <Statuses :statuses="statuses" :total="total"/>
+            <div class="card">
+                <Statuses :statuses="statuses" :total="total" />
             </div>
         </div>
         <div class="col-xl-12 mt-n2">
@@ -33,92 +56,111 @@
         </div>
         <div class="col-xl-4 mt-n2">
             <div class="card">
-                <School :schools="schools" :total="total"/>
+                <School :schools="schools" :total="total" />
             </div>
         </div>
         <div class="col-xl-4 mt-n2">
             <div class="card">
-                <Course :courses="courses" :total="total"/>
+                <Course :courses="courses" :total="total" />
             </div>
         </div>
         <div class="col-xl-4 mt-n2">
             <div class="card">
-                <Gender :gender="gender" :school="school"/>
+                <Gender :gender="gender" :school="school" />
             </div>
         </div>
     </div>
 </template>
 <script>
-import Header from "@/Shared/Header.vue";
-import Count from "./Sections/Count.vue";
-import Program from "./Sections/Program.vue";
-import Year from "./Sections/Year.vue";
-import Lists from "./Sections/Lists.vue";
-import School from "./Sections/School.vue";
-import Course from "./Sections/Course.vue";
-import Gender from "./Sections/Gender.vue";
-import Statuses from "./Sections/Status.vue";
-export default {
-    components: { Header, Count, Program, Year, School, Course, Gender, Statuses, Lists },
-    props: ['dropdowns'],
-    data() {
-        return {
-            currentUrl: window.location.origin,
-            title: "Insights",
-            items: [{text: "Insights", href: "/",},{text: "Lists",active: true,},],
-            lists: {},
-            schools: [],
-            courses: [],
-            statuses: [],
-            years: [],
-            gender: [],
-            school: [],
-            total: '',
-            types: { lists : []},
-            colors : ['bg-primary','bg-danger','bg-success','bg-warning','bg-info','bg-seconday'],
-            series: [],
-            chartOptions: {
-                chart: {
-                    type: 'pie',
-                    height: 100,
+    import Header from "@/Shared/Header.vue";
+    import Count from "./Sections/Count.vue";
+    import Program from "./Sections/Program.vue";
+    import Year from "./Sections/Year.vue";
+    import Lists from "./Sections/Lists.vue";
+    import School from "./Sections/School.vue";
+    import Course from "./Sections/Course.vue";
+    import Gender from "./Sections/Gender.vue";
+    import Statuses from "./Sections/Status.vue";
+    export default {
+        components: {
+            Header,
+            Count,
+            Program,
+            Year,
+            School,
+            Course,
+            Gender,
+            Statuses,
+            Lists
+        },
+        props: ['dropdowns'],
+        data() {
+            return {
+                currentUrl: window.location.origin,
+                title: "Insights",
+                items: [{
+                    text: "Insights",
+                    href: "/",
+                }, {
+                    text: "Lists",
+                    active: true,
+                }, ],
+                lists: {},
+                schools: [],
+                courses: [],
+                statuses: [],
+                years: [],
+                gender: [],
+                school: [],
+                total: '',
+                types: {
+                    lists: []
                 },
-                labels: ['Male', 'Female'],
-                colors: ['#556ee6', '#34c38f'],
-                legend: {
-                    show: false,
+                colors: ['bg-primary', 'bg-danger', 'bg-success', 'bg-warning', 'bg-info', 'bg-seconday'],
+                series: [],
+                chartOptions: {
+                    chart: {
+                        type: 'pie',
+                        height: 100,
+                    },
+                    labels: ['Male', 'Female'],
+                    colors: ['#556ee6', '#34c38f'],
+                    legend: {
+                        show: false,
+                    }
                 }
+            };
+        },
+
+        created() {
+            this.fetch();
+        },
+
+        computed: {
+            main() {
+                return this.lists.filter(car => car.is_sub == 0);
             }
-        };
-    },
+        },
 
-    created() {
-        this.fetch();
-    },
-
-    computed : {
-        main(){
-            return this.lists.filter(car => car.is_sub == 0);
-        }
-    },
-
-    methods: {
-        fetch() {
-            axios.get(this.currentUrl + '/insights',{
-                params : {
-                    search : 'lists'
-                }
-            })
-            .then(response => {
-                this.lists = response.data.lists.graphs;
-                this.schools = response.data.lists.schools;
-                this.courses = response.data.lists.courses;
-                this.statuses = response.data.lists.statuses;
-                this.gender = response.data.counts.gender;
-                this.school = response.data.counts.school;
-                this.total = response.data.counts.total;
-            })
-            .catch(err => console.log(err));
+        methods: {
+            fetch() {
+                axios.get(this.currentUrl + '/insights', {
+                        params: {
+                            search: 'lists'
+                        }
+                    })
+                    .then(response => {
+                        this.lists = response.data.lists.graphs;
+                        this.schools = response.data.lists.schools;
+                        this.courses = response.data.lists.courses;
+                        this.statuses = response.data.lists.statuses;
+                        this.gender = response.data.counts.gender;
+                        this.school = response.data.counts.school;
+                        this.total = response.data.counts.total;
+                    })
+                    .catch(err => console.log(err));
+            }
         }
     }
-}
+
 </script>

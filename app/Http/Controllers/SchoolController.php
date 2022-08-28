@@ -68,8 +68,18 @@ class SchoolController extends Controller
             break;
             case 'prospectus': 
                 $level = ['First Year','Second Year','Third Year','Fourth Year','Fifth Year'];
-                $semesters = ['First Semester', 'Second Semester', 'Summer Class'];
+                $semester = ['First Semester', 'Second Semester', 'Summer Class'];
+                $trimester = ['First Term', 'Second Term', 'Third Term', 'Midyear'];
+                $quarter = ['First Term', 'Second Term', 'Third Term','Fourth Term'];
                 $years = $request->years;
+                $type = $request->type;
+                if($type == 'Semester'){
+                    $semesters = $semester;
+                }else  if($type == 'Trimester'){
+                    $semesters = $trimester;
+                }else{
+                    $semesters = $quarter;
+                }
                 $group = []; $courses = [];
 
                 for ($i = 0; $i < $years; ++$i) {

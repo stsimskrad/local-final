@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>School Year: <span v-if="form.errors" v-text="form.errors.school_year" class="haveerror"></span></label>
+                        <label>School Year:<span v-if="form.errors" v-text="form.errors.school_year" class="haveerror"></span></label>
                         <input type="text" class="form-control" v-model="schoolyear">
                     </div>
                 </div>
@@ -18,6 +18,7 @@
 </template>
 <script>
 export default {
+    props: ['type'],
     data(){
         return {
             showModal: false,
@@ -40,6 +41,7 @@ export default {
                 school_course_id : this.course.id,
                 years : this.course.years,
                 editable: false,
+                type: this.type,
                 option: 'prospectus'
             })
             this.form.post('/schools',{

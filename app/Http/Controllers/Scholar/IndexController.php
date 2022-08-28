@@ -94,7 +94,7 @@ class IndexController extends Controller
         if($data == 'import'){
             return inertia('Scholars/Import');
         }elseif($data == 'report'){
-
+            return inertia('Scholars/Report');
         }else{
             $hashids = new Hashids('krad',10);
             $id = $hashids->decode($data);

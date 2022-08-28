@@ -13,7 +13,7 @@
                         <Link href="scholars/import">
                             <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Import</button>
                         </Link>
-                        <Link href="scholars/reports">
+                        <Link href="scholars/report">
                             <button type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Reports</button>
                         </Link>
                     </div>

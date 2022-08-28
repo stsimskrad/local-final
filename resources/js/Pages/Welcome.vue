@@ -19,10 +19,10 @@
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav ms-auto" id="topnav-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript: void(0);">Home</a>
+                                <Link class="nav-link" href="/">Home</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript: void(0);">About</a>
+                                <Link class="nav-link" href="/search">Search</Link>
                             </li>
                         </ul>
 
@@ -64,56 +64,358 @@
                     </div>
                 </section>
 
-                <section id="about" class="section pt-4 bg-white"><div class="container"><div class="row mt-4"><div class="col-lg-12"><div class="row g-3"><div class="col-lg-4"><div class="card border mini-stats-wid"><div class="card-body"><div class="d-flex flex-wrap"><div class="me-3"><p class="text-muted mb-2">Total Scholars</p> <h5 class="mb-0">1007</h5></div> <div class="avatar-sm ms-auto"><div class="avatar-title bg-light rounded-circle font-size-20 text-success"><i class="bx bx-group"></i></div></div></div></div></div></div><div class="col-lg-4"><div class="card border mini-stats-wid"><div class="card-body"><div class="d-flex flex-wrap"><div class="me-3"><p class="text-muted mb-2">Total Graduates</p> <h5 class="mb-0">651</h5></div> <div class="avatar-sm ms-auto"><div class="avatar-title bg-light rounded-circle font-size-20 text-info"><i class="bx bxs-graduation"></i></div></div></div></div></div></div><div class="col-lg-4"><div class="card border mini-stats-wid"><div class="card-body"><div class="d-flex flex-wrap"><div class="me-3"><p class="text-muted mb-2">Ongoing Scholars</p> <h5 class="mb-0">193</h5></div> <div class="avatar-sm ms-auto"><div class="avatar-title bg-light rounded-circle font-size-20 text-primary"><i class="bx bx-user-circle"></i></div></div></div></div></div></div></div> <div class="row"><div class="card-body"><div class="me-n2 ms-n2"><ul class="list-inline user-chat-nav text-end ms-4 mt-1 dropdown float-end"><li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;"><div class="form-check"><input type="checkbox" id="programs" class="form-check-input"> <label for="programs" class="form-check-label font-size-11">
-                    Sub-Programs</label></div></li> <li class="list-inline-item d-non d-sm-inline-block " style="margin-right: 50px;"><div class="form-check"><input type="checkbox" id="graph" class="form-check-input"> <label for="graph" class="form-check-label font-size-11">
-                    Graphical View</label></div></li></ul> <div class="tabs" id="__BVID__7"><!----><div class=""><ul role="tablist" class="nav nav-pills small bg-light rounded" id="__BVID__7__BV_tab_controls_"><!----><li role="presentation" class="nav-item"><a role="tab" aria-selected="true" aria-setsize="2" aria-posinset="1" href="#" target="_self" class="nav-link active" id="__BVID__8___BV_tab_button__" aria-controls="__BVID__8">Provinces</a></li><li role="presentation" class="nav-item"><a role="tab" tabindex="-1" aria-selected="false" aria-setsize="2" aria-posinset="2" href="#" target="_self" class="nav-link" id="__BVID__10___BV_tab_button__" aria-controls="__BVID__10">Programs</a></li><!----></ul></div><div class="tab-content mt-3" id="__BVID__7__BV_tab_container_"><div role="tabpanel" aria-hidden="false" class="tab-pane active" id="__BVID__8" aria-labelledby="__BVID__8___BV_tab_button__"><p class="card-text"><div class="row ms-n1 me-n1"><div class="col-md-3 g-0 ps-1"><table class="table table-centered table-bordered table-nowrap"><thead class="thead-light"><tr class="font-size-10"><th style="width: 100%;">Province</th></tr></thead> <tbody class="font-size-11"><tr><td class="fw-bold" style="width: 100%; cursor: pointer;">
-                                        Zamboanga Del Norte
-                                    </td></tr><tr><td class="fw-bold" style="width: 100%; cursor: pointer;">
-                                        City of Zamboanga
-                                    </td></tr><tr><td class="fw-bold" style="width: 100%; cursor: pointer;">
-                                        Zamboanga Del Sur
-                                    </td></tr><tr><td class="fw-bold" style="width: 100%; cursor: pointer;">
-                                        Zamboanga Sibugay
-                                    </td></tr> <tr><td class="fw-bold font-size-12 text-success" style="width: 100%;">Total</td></tr></tbody></table></div> <div class="col-md-8 g-0"><table class="table table-centered table-bordered table-nowrap"><thead class="thead-light"><tr class="font-size-10"><th class="text-center" style="width: 13%;">
-                                        RA 7687</th><th class="text-center" style="width: 13%;">
-                                        Ra 10612</th><th class="text-center" style="width: 13%;">
-                                        Merit</th></tr></thead> <tbody class="font-size-11"><tr><td class="text-center" style="width: 13%;">
-                                        504
-                                    </td><td class="text-center" style="width: 13%;">
-                                        86
-                                    </td><td class="text-center" style="width: 13%;">
-                                        19
-                                    </td><!----><!----><!----></tr><tr><td class="text-center" style="width: 13%;">
-                                        306
-                                    </td><td class="text-center" style="width: 13%;">
-                                        54
-                                    </td><td class="text-center" style="width: 13%;">
-                                        20
-                                    </td><!----><!----><!----></tr><tr><td class="text-center" style="width: 13%;">
-                                        6
-                                    </td><td class="text-center" style="width: 13%;">
-                                        1
-                                    </td><td class="text-center" style="width: 13%;">
-                                        0
-                                    </td><!----><!----><!----></tr><tr><td class="text-center" style="width: 13%;">
-                                        0
-                                    </td><td class="text-center" style="width: 13%;">
-                                        0
-                                    </td><td class="text-center" style="width: 13%;">
-                                        0
-                                    </td><!----><!----><!----></tr> <tr><td class="text-center font-size-12 text-success fw-bold" style="width: 13%;">816</td><td class="text-center font-size-12 text-success fw-bold" style="width: 13%;">141</td><td class="text-center font-size-12 text-success fw-bold" style="width: 13%;">39</td><!----><!----><!----></tr></tbody></table></div> <div class="col-md-1 g-0 pe-1"><table class="table table-centered table-bordered table-nowrap"><thead class="thead-light"><tr class="font-size-10"><th class="text-center" style="width: 100%;">Total</th></tr></thead> <tbody class="font-size-11"><tr><td class="fw-bold text-center text-success" style="width: 13%;">609</td></tr><tr><td class="fw-bold text-center text-success" style="width: 13%;">380</td></tr><tr><td class="fw-bold text-center text-success" style="width: 13%;">7</td></tr><tr><td class="fw-bold text-center text-success" style="width: 13%;">0</td></tr> <tr><td class="font-size-12 fw-bold  text-primary text-center" style="width: 100%;">996</td></tr></tbody></table></div></div></p></div> <div role="tabpanel" aria-hidden="true" class="tab-pane" style="display: none;" id="__BVID__10" aria-labelledby="__BVID__10___BV_tab_button__"><p class="card-text"><div class="table-responsive"><table class="table table-centered table-bordered table-nowrap mb-0"><thead class="thead-light"><tr class="font-size-10"><th style="width: 40%;">Name</th> <th class="text-center" style="width: 20%;">Undergraduate</th> <th class="text-center" style="width: 20%;">JLSS</th> <th class="text-center" style="width: 20%;">Total</th></tr></thead></table> <table class="table table-centered table-bordered table-nowrap"><tbody class="font-size-11"><tr><td class="fw-bold" style="width: 40%; cursor: pointer;">
-                                    RA 7687
-                                </td> <td class="text-center" style="width: 20%;">
-                                    752
-                                </td> <td class="text-center" style="width: 20%;">64</td> <td class="fw-bold text-center" style="width: 20%;">816</td></tr><tr><td class="fw-bold" style="width: 40%; cursor: pointer;">
-                                    Ra 10612
-                                </td> <td class="text-center" style="width: 20%;">
-                                    0
-                                </td> <td class="text-center" style="width: 20%;">141</td> <td class="fw-bold text-center" style="width: 20%;">141</td></tr><tr><td class="fw-bold" style="width: 40%; cursor: pointer;">
-                                    Merit
-                                </td> <td class="text-center" style="width: 20%;">
-                                    29
-                                </td> <td class="text-center" style="width: 20%;">10</td> <td class="fw-bold text-center" style="width: 20%;">39</td></tr></tbody></table></div></p></div><!----></div></div> <!----></div></div></div></div></div></div></section>
+                <section id="about" class="section pt-4 bg-white">
+                    <div class="container">
+                        <div class="row mt-4">
+                            <div class="col-lg-12">
+                                <div class="row g-3">
+                                    <div class="col-lg-4">
+                                        <div class="card border mini-stats-wid">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-3">
+                                                        <p class="text-muted mb-2">Total Scholars</p>
+                                                        <h5 class="mb-0">1007</h5>
+                                                    </div>
+                                                    <div class="avatar-sm ms-auto">
+                                                        <div
+                                                            class="avatar-title bg-light rounded-circle font-size-20 text-success">
+                                                            <i class="bx bx-group"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border mini-stats-wid">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-3">
+                                                        <p class="text-muted mb-2">Total Graduates</p>
+                                                        <h5 class="mb-0">651</h5>
+                                                    </div>
+                                                    <div class="avatar-sm ms-auto">
+                                                        <div
+                                                            class="avatar-title bg-light rounded-circle font-size-20 text-info">
+                                                            <i class="bx bxs-graduation"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border mini-stats-wid">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-3">
+                                                        <p class="text-muted mb-2">Ongoing Scholars</p>
+                                                        <h5 class="mb-0">193</h5>
+                                                    </div>
+                                                    <div class="avatar-sm ms-auto">
+                                                        <div
+                                                            class="avatar-title bg-light rounded-circle font-size-20 text-primary">
+                                                            <i class="bx bx-user-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card-body">
+                                        <div class="me-n2 ms-n2">
+                                            <ul class="list-inline user-chat-nav text-end ms-4 mt-1 dropdown float-end">
+                                                <li class="list-inline-item d-non d-sm-inline-block"
+                                                    style="margin-right: 50px;">
+                                                    <div class="form-check"><input type="checkbox" id="programs"
+                                                            class="form-check-input"> <label for="programs"
+                                                            class="form-check-label font-size-11">
+                                                            Sub-Programs</label></div>
+                                                </li>
+                                                <li class="list-inline-item d-non d-sm-inline-block "
+                                                    style="margin-right: 50px;">
+                                                    <div class="form-check"><input type="checkbox" id="graph"
+                                                            class="form-check-input"> <label for="graph"
+                                                            class="form-check-label font-size-11">
+                                                            Graphical View</label></div>
+                                                </li>
+                                            </ul>
+                                            <div class="tabs" id="__BVID__7">
+                                                <!---->
+                                                <div class="">
+                                                    <ul role="tablist" class="nav nav-pills small bg-light rounded"
+                                                        id="__BVID__7__BV_tab_controls_">
+                                                        <!---->
+                                                        <li role="presentation" class="nav-item"><a role="tab"
+                                                                aria-selected="true" aria-setsize="2" aria-posinset="1"
+                                                                href="#" target="_self" class="nav-link active"
+                                                                id="__BVID__8___BV_tab_button__"
+                                                                aria-controls="__BVID__8">Provinces</a></li>
+                                                        <li role="presentation" class="nav-item"><a role="tab"
+                                                                tabindex="-1" aria-selected="false" aria-setsize="2"
+                                                                aria-posinset="2" href="#" target="_self"
+                                                                class="nav-link" id="__BVID__10___BV_tab_button__"
+                                                                aria-controls="__BVID__10">Programs</a></li>
+                                                        <!---->
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-content mt-3" id="__BVID__7__BV_tab_container_">
+                                                    <div role="tabpanel" aria-hidden="false" class="tab-pane active"
+                                                        id="__BVID__8" aria-labelledby="__BVID__8___BV_tab_button__">
+                                                        <p class="card-text">
+                                                            <div class="row ms-n1 me-n1">
+                                                                <div class="col-md-3 g-0 ps-1">
+                                                                    <table
+                                                                        class="table table-centered table-bordered table-nowrap">
+                                                                        <thead class="thead-light">
+                                                                            <tr class="font-size-10">
+                                                                                <th style="width: 100%;">Province</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody class="font-size-11">
+                                                                            <tr>
+                                                                                <td class="fw-bold"
+                                                                                    style="width: 100%; cursor: pointer;">
+                                                                                    Zamboanga Del Norte
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold"
+                                                                                    style="width: 100%; cursor: pointer;">
+                                                                                    City of Zamboanga
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold"
+                                                                                    style="width: 100%; cursor: pointer;">
+                                                                                    Zamboanga Del Sur
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold"
+                                                                                    style="width: 100%; cursor: pointer;">
+                                                                                    Zamboanga Sibugay
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold font-size-12 text-success"
+                                                                                    style="width: 100%;">Total</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="col-md-8 g-0">
+                                                                    <table
+                                                                        class="table table-centered table-bordered table-nowrap">
+                                                                        <thead class="thead-light">
+                                                                            <tr class="font-size-10">
+                                                                                <th class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    RA 7687</th>
+                                                                                <th class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    Ra 10612</th>
+                                                                                <th class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    Merit</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody class="font-size-11">
+                                                                            <tr>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    504
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    86
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    19
+                                                                                </td>
+                                                                                <!---->
+                                                                                <!---->
+                                                                                <!---->
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    306
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    54
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    20
+                                                                                </td>
+                                                                                <!---->
+                                                                                <!---->
+                                                                                <!---->
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    6
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    1
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    0
+                                                                                </td>
+                                                                                <!---->
+                                                                                <!---->
+                                                                                <!---->
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    0
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    0
+                                                                                </td>
+                                                                                <td class="text-center"
+                                                                                    style="width: 13%;">
+                                                                                    0
+                                                                                </td>
+                                                                                <!---->
+                                                                                <!---->
+                                                                                <!---->
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center font-size-12 text-success fw-bold"
+                                                                                    style="width: 13%;">816</td>
+                                                                                <td class="text-center font-size-12 text-success fw-bold"
+                                                                                    style="width: 13%;">141</td>
+                                                                                <td class="text-center font-size-12 text-success fw-bold"
+                                                                                    style="width: 13%;">39</td>
+                                                                                <!---->
+                                                                                <!---->
+                                                                                <!---->
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="col-md-1 g-0 pe-1">
+                                                                    <table
+                                                                        class="table table-centered table-bordered table-nowrap">
+                                                                        <thead class="thead-light">
+                                                                            <tr class="font-size-10">
+                                                                                <th class="text-center"
+                                                                                    style="width: 100%;">Total</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody class="font-size-11">
+                                                                            <tr>
+                                                                                <td class="fw-bold text-center text-success"
+                                                                                    style="width: 13%;">609</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold text-center text-success"
+                                                                                    style="width: 13%;">380</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold text-center text-success"
+                                                                                    style="width: 13%;">7</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="fw-bold text-center text-success"
+                                                                                    style="width: 13%;">0</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="font-size-12 fw-bold  text-primary text-center"
+                                                                                    style="width: 100%;">996</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                    <div role="tabpanel" aria-hidden="true" class="tab-pane"
+                                                        style="display: none;" id="__BVID__10"
+                                                        aria-labelledby="__BVID__10___BV_tab_button__">
+                                                        <p class="card-text">
+                                                            <div class="table-responsive">
+                                                                <table
+                                                                    class="table table-centered table-bordered table-nowrap mb-0">
+                                                                    <thead class="thead-light">
+                                                                        <tr class="font-size-10">
+                                                                            <th style="width: 40%;">Name</th>
+                                                                            <th class="text-center" style="width: 20%;">
+                                                                                Undergraduate</th>
+                                                                            <th class="text-center" style="width: 20%;">
+                                                                                JLSS</th>
+                                                                            <th class="text-center" style="width: 20%;">
+                                                                                Total</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                                <table
+                                                                    class="table table-centered table-bordered table-nowrap">
+                                                                    <tbody class="font-size-11">
+                                                                        <tr>
+                                                                            <td class="fw-bold"
+                                                                                style="width: 40%; cursor: pointer;">
+                                                                                RA 7687
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                752
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                64</td>
+                                                                            <td class="fw-bold text-center"
+                                                                                style="width: 20%;">816</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold"
+                                                                                style="width: 40%; cursor: pointer;">
+                                                                                Ra 10612
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                0
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                141</td>
+                                                                            <td class="fw-bold text-center"
+                                                                                style="width: 20%;">141</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="fw-bold"
+                                                                                style="width: 40%; cursor: pointer;">
+                                                                                Merit
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                29
+                                                                            </td>
+                                                                            <td class="text-center" style="width: 20%;">
+                                                                                10</td>
+                                                                            <td class="fw-bold text-center"
+                                                                                style="width: 20%;">39</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                    <!---->
+                                                </div>
+                                            </div>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="team" class="section">
                     <div class="container">
@@ -264,6 +566,33 @@
                     </div>
                 </section>
 
+                <section id="about" class="section pt-4 bg-white">
+                    <div class="container">
+                        <div class="row mt-4">
+                            <div class="col-lg-12">
+                                <div class="text-center mb-4">
+                                    <div class="avatar-md mx-auto mb-4">
+                                        <div class="avatar-title bg-light rounded-circle text-primary h1"><i
+                                                class="bx bxs-school"></i></div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-xl-10">
+                                            <h4 class="text-primary">Priority S&T Programs and Study Placement</h4>
+                                            <p class="text-muted font-size-14 mb-4"> Search school and course on the Priority S&T Programs and Study Placement. </p>
+                                            <div class="input-group bg-light rounded"><input type="email"
+                                                    class="form-control bg-transparent border-0"
+                                                    placeholder="Enter School/Course" aria-label="Recipient's username"
+                                                    aria-describedby="button-addon2"><button class="btn btn-primary"
+                                                    type="button" id="button-addon2"><i
+                                                        class="bx bx-search-alt"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <footer class="landing-footer">
                     <div class="container">
                         <div class="row">
@@ -281,9 +610,9 @@
     </body>
 </template>
 <script>
-   export default {
-      layout: null,
-      data() {
+    export default {
+        layout: null,
+        data() {
             return {
                 start: "",
                 end: "",
@@ -312,56 +641,53 @@
             }, 1000);
         },
         methods: {
-         timerCount: function (start, end) {
-               // Get todays date and time
-               var now = new Date().getTime();
+            timerCount: function (start, end) {
+                // Get todays date and time
+                var now = new Date().getTime();
 
-               // Find the distance between now an the count down date
-               var distance = start - now;
-               var passTime = end - now;
+                // Find the distance between now an the count down date
+                var distance = start - now;
+                var passTime = end - now;
 
-               if (distance < 0 && passTime < 0) {
-                  clearInterval(this.interval);
-                  return;
-               } else if (distance < 0 && passTime > 0) {
-                  this.calcTime(passTime);
-               } else if (distance > 0 && passTime > 0) {
-                  this.calcTime(distance);
-               }
-         },
-         calcTime: function (dist) {
-               // Time calculations for days, hours, minutes and seconds
-               this.days = Math.floor(dist / (1000 * 60 * 60 * 24));
-               this.hours = Math.floor(
-                  (dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-               );
-               this.minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-               this.seconds = Math.floor((dist % (1000 * 60)) / 1000);
-         },
-         windowScroll() {
-               const navbar = document.getElementById("navbar");
-               if (
-                  document.body.scrollTop >= 50 ||
-                  document.documentElement.scrollTop >= 50
-               ) {
-                  navbar.classList.add("nav-sticky");
-               } else {
-                  navbar.classList.remove("nav-sticky");
-               }
-         },
-         toggleMenu() {
-               document.getElementById("topnav-menu-content").classList.toggle("show");
-         },
-         nextSlide() {
-               this.$refs.carousel.goToPage(this.$refs.carousel.getNextPage());
-         },
-         prevSlide() {
-               this.$refs.carousel.goToPage(this.$refs.carousel.getPreviousPage());
-         }
-      }
-   }
+                if (distance < 0 && passTime < 0) {
+                    clearInterval(this.interval);
+                    return;
+                } else if (distance < 0 && passTime > 0) {
+                    this.calcTime(passTime);
+                } else if (distance > 0 && passTime > 0) {
+                    this.calcTime(distance);
+                }
+            },
+            calcTime: function (dist) {
+                // Time calculations for days, hours, minutes and seconds
+                this.days = Math.floor(dist / (1000 * 60 * 60 * 24));
+                this.hours = Math.floor(
+                    (dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                this.minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                this.seconds = Math.floor((dist % (1000 * 60)) / 1000);
+            },
+            windowScroll() {
+                const navbar = document.getElementById("navbar");
+                if (
+                    document.body.scrollTop >= 50 ||
+                    document.documentElement.scrollTop >= 50
+                ) {
+                    navbar.classList.add("nav-sticky");
+                } else {
+                    navbar.classList.remove("nav-sticky");
+                }
+            },
+            toggleMenu() {
+                document.getElementById("topnav-menu-content").classList.toggle("show");
+            },
+            nextSlide() {
+                this.$refs.carousel.goToPage(this.$refs.carousel.getNextPage());
+            },
+            prevSlide() {
+                this.$refs.carousel.goToPage(this.$refs.carousel.getPreviousPage());
+            }
+        }
+    }
 
 </script>
-
-
-

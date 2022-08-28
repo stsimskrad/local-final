@@ -12,8 +12,8 @@
                 <div class="flex-grow-1">
                     <div class="text-muted">
                         <span class="fw-bold font-size-13 text-primary">{{ $page.props.scholar.data.profile.firstname+' '+$page.props.scholar.data.profile.middlename+' '+$page.props.scholar.data.profile.lastname }}</span>
-                        <p class="mb-0 font-size-11 fw-bold">{{ $page.props.scholar.data.spas_id }}</p>
-                        <p class="mb-0 font-size-11 mt-n1">{{ $page.props.scholar.data.profile.email }}</p>
+                        <!-- <p class="mb-0 font-size-11 fw-bold">{{ $page.props.scholar.data.spas_id }}</p> -->
+                        <p class="mb-0 font-size-11 ">{{ $page.props.scholar.data.profile.email }}</p>
                         <p class="text-muted mb-0"><span :class="'badge bg-'+$page.props.scholar.data.status.color">{{$page.props.scholar.data.status.name}} </span></p>
                     </div>
                 </div>

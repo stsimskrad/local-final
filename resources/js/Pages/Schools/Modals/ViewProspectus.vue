@@ -1,6 +1,6 @@
 <template>
     <b-modal v-model="showModal" @ok="save($event)" id="viewprospectus" size="xl" ok-title="Save" title="View Prospectus" centered>
-        <b-form class="customform">
+      <b-form class="customform">
             <div class="row">
                 <b-tabs v-model="tabIndex">
                     <b-tab v-for="(semester,index) in semesters" v-bind:key="index">

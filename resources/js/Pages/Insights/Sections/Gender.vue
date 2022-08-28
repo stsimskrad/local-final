@@ -70,7 +70,7 @@
                     legend: {
                         show: false,
                     }
-                }
+                },
             }
         },
         computed : {

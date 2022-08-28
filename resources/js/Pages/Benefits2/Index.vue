@@ -25,6 +25,59 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="row g-3">
+                            <div class="col-xl-4" style="cursor: pointer;">
+                                <div class="card shadow-none border">
+                                    <div class="card-body p-3">
+                                        <div class="mt-n2 mb-n2">
+                                            <div class="avatar-xs me-3 mb-2">
+                                                <div class="avatar-title bg-transparent rounded">
+                                                    <i class="bx bxs-folder font-size-24 text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4" style="cursor: pointer;">
+                                <div class="card shadow-none border">
+                                    <div class="card-body p-3">
+                                        <div class="mt-n2 mb-n2">
+                                            <div class="avatar-xs me-3 mb-2">
+                                                <div class="avatar-title bg-transparent rounded">
+                                                    <i class="bx bxs-folder font-size-24 text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4" style="cursor: pointer;">
+                                <div class="card shadow-none border">
+                                    <div class="card-body p-3">
+                                        <div class="mt-n2 mb-n2">
+                                            <div class="avatar-xs me-3 mb-2">
+                                                <div class="avatar-title bg-transparent rounded">
+                                                    <i class="bx bxs-folder font-size-24 text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="col-xl-12" style="cursor: pointer;">
                             <div class="card shadow-none border">
                                 <div class="card-body p-3">

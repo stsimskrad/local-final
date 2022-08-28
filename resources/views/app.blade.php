@@ -9,6 +9,7 @@
         <script src="{{ mix('/js/manifest.js') }}" defer></script>
         <script src="{{ mix('/js/vendor.js') }}" defer></script>
         <script src="{{ mix('/js/app.js') }}" defer></script>
+        <script>window.User = {!! json_encode(optional(auth()->user())->only('role')) !!}</script>
         @inertiaHead
     </head>
 

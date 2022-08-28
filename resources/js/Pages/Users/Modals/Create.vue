@@ -167,6 +167,9 @@
                         preserveScroll: true,
                         onSuccess: (response) => {
                             this.hide();
+                        },
+                        onError: () => {
+                            this.isLoading = false;
                         }
                     });
                 }else{

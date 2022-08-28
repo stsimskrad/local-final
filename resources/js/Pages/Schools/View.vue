@@ -1,7 +1,7 @@
 <template>
     <Header :title="school.data.name" :content="'School Profile'" :items="items" />
     
-    <div class="card mt-n3">
+    <div class="card mt-n3 mb-3">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-7">
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row g-3">
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body mb-n3">
@@ -187,8 +187,8 @@
     </div>
 
     <Course ref="course"/>
-    <Prospectus ref="prospectus"/>
-    <Semester :semesters="semesters" ref="semester"/>
+    <Prospectus :type="school.data.term.name" ref="prospectus"/>
+    <Semester :type="school.data.term.name" :semesters="semesters" ref="semester"/>
     <ViewProspectus :height="height" ref="viewprospectus"/>
 </template>
 
@@ -223,7 +223,7 @@ export default {
 
     computed : {
         semesters : function() {
-            return this.dropdowns.filter(x => x.classification === 'Semester');
+            return this.dropdowns.filter(x => x.type === 'term');
         }
     },
 

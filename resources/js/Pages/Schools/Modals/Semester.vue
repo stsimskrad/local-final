@@ -3,7 +3,7 @@
         <b-form class="customform mb-2">
             <div class="row">
                 <div class="col-md-6">
-                    <label>Year From: 
+                    <label>Year From: {{ type }}
                         <span v-if="form.errors" v-text="form.errors.academic_year" class="haveerror"></span>
                     </label>
                     <date-picker
@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <label>Semester: <span v-if="form.errors" v-text="form.errors.semester_id" class="haveerror"></span></label>
                     <multiselect v-model="semester.semester" id="ajax" label="name" track-by="id"
-                        placeholder="Select Semester" open-direction="bottom" :options="semesters"
+                        placeholder="Select Semester" open-direction="bottom" :options="semester_lists"
                         :allow-empty="false"
                         :show-labels="false">
                     </multiselect> 
@@ -63,7 +63,7 @@ import 'vue-datepicker-next/index.css';
 import Multiselect from '@suadelabs/vue3-multiselect';
 export default {
     components : { DatePicker, Multiselect },
-    props: ['semesters'],
+    props: ['semesters','type'],
     data(){
         return {
             showModal: false,
@@ -87,7 +87,10 @@ export default {
             }else{
                 return '';
             }
-        }
+        },
+        semester_lists : function() {
+            return this.semesters.filter(x => x.classification === this.type);
+        },
     },
 
     methods : {

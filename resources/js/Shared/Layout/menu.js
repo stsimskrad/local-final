@@ -11,7 +11,16 @@ export const menuItems = [{
         link: "/home",
         component: "Home/Index",
         name: "Home",
-        user: ['Scholarship Coordinator'],
+        user: ['Super Administrator', 'Regional Director', 'Scholarship Coordinator', 'Scholarship Staff'],
+    },
+    {
+        id: 2,
+        label: "Monitoring",
+        icon: "bxs-webcam",
+        link: "/monitoring",
+        component: "Monitoring/Index",
+        name: "Monitoring",
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     {
         id: 10,
@@ -20,7 +29,7 @@ export const menuItems = [{
         link: "/qualifiers",
         component: "Qualifiers/Index",
         name: "Qualifiers",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     {
         id: 11,
@@ -29,7 +38,7 @@ export const menuItems = [{
         link: "/scholars",
         name: "Scholars",
         component: "Scholars/Index",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     {
         id: 12,
@@ -38,7 +47,7 @@ export const menuItems = [{
         link: "/enrollments",
         component: "Enrollments/Index",
         name: "Enrollments",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     // {
     //     id: 12,
@@ -56,7 +65,7 @@ export const menuItems = [{
         link: "/benefits2",
         component: "Benefits2/Index",
         name: "Benefits2",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     {
         id: 123,
@@ -65,7 +74,16 @@ export const menuItems = [{
         link: "/accounting",
         component: "Accounting/Index",
         name: "Accounting",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
+    },
+    {
+        id: 122,
+        label: "Events",
+        icon: "bxs-calendar-event",
+        link: "/events",
+        component: "Events/Index",
+        name: "Events",
+        user: ['Scholarship Coordinator', 'Scholarship Staff'],
     },
     {
         id: 4,
@@ -74,7 +92,7 @@ export const menuItems = [{
         link: "/schools",
         component: "Schools/Index",
         name: "Schools",
-        user: ['Scholarship Coordinator'],
+        user: ['Super Administrator', 'Scholarship Coordinator'],
     },
     {
         id: 13,
@@ -83,7 +101,7 @@ export const menuItems = [{
         link: "/insights",
         component: "Insights/Index",
         name: "Insights",
-        user: ['Scholarship Coordinator'],
+        user: ['Super Administrator', 'Scholarship Coordinator', 'Regional Director'],
     },
     {
         id: 3,
@@ -92,7 +110,7 @@ export const menuItems = [{
         link: "/users",
         component: "Users/Index",
         name: "Users",
-        user: ['Scholarship Coordinator'],
+        user: ['Super Administrator'],
     },
 
     {
@@ -101,7 +119,7 @@ export const menuItems = [{
         icon: "bx-cloud-download",
         link: "/downloads",
         component: "Downloads/Index",
-        user: ['Scholarship Coordinator'],
+        user: ['Super Administrator'],
     },
     {
         id: 6,
