@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-md-12 mt-n2">
 
-                    <div class="card mb-3">
+                    <!-- <div class="card mb-3">
                         <div v-if="academic_year != null" class="card-body mt-n1" style="height: 210px;">
                             <div class="card border shadow-none">
                                 <div class="p-1">
@@ -122,7 +122,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="card">
                         <div class="card-body" style="height: 218px;">
@@ -231,9 +231,9 @@ import Request from './Sections/Request.vue';
                     })
                     .then(response => {
                         this.staffs = response.data.staffs;
-                        this.academic_year = response.data.academic_year;
+                        // this.academic_year = response.data.academic_year;
                         this.qualifiers = response.data.qualifiers;
-                        (this.academic_year == null) ? this.$refs.group.set() : '';
+                        // (this.academic_year == null) ? this.$refs.group.set() : '';
                     })
                     .catch(err => console.log(err));
             },

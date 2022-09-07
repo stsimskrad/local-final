@@ -24,7 +24,6 @@ class ReleaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'month' => 'required',
             'lists' => 'required|min:1',
             'dv' => 'required',
             'dv_no' => 'required_if:dv,true',

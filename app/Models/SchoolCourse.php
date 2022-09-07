@@ -10,7 +10,7 @@ class SchoolCourse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'school_id', 'course_id', 'type' , 'years'
+        'school_id', 'course_id', 'type' , 'years', 'validity', 'certification'
     ];
 
     public function prospectuses()

@@ -12,8 +12,6 @@ class School extends Model
     protected $fillable = [
         'name',
         'class_id',
-        'term_id',
-        'grading_id',
         'code',
     ];
 
@@ -30,16 +28,6 @@ class School extends Model
     public function class()
     {
         return $this->belongsTo('App\Models\ListDropdown', 'class_id', 'id');
-    }
-
-    public function term()
-    {
-        return $this->belongsTo('App\Models\ListDropdown', 'term_id', 'id');
-    }
-
-    public function grading()
-    {
-        return $this->belongsTo('App\Models\ListDropdown', 'grading_id', 'id');
     }
 
     public function getNameAttribute($value){

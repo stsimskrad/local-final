@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('group_lists', function (Blueprint $table) {
+        Schema::create('enrolled_lists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            // $table->string('count',3)->default(0);
-            // $table->boolean('is_first')->default(1);
-            // $table->boolean('is_hold')->default(0);
-            $table->boolean('is_completed')->default(0);
-            // $table->date('start_at');
-            $table->integer('group_id')->unsigned()->index();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->boolean('grades_completed')->default(0);
+            $table->boolean('benefits_completed')->default(0);
+            $table->integer('school_semester_id')->unsigned()->index();
+            $table->foreign('school_semester_id')->references('id')->on('school_semesters')->onDelete('cascade');
             $table->bigInteger('scholar_id')->unsigned()->index();
             $table->foreign('scholar_id')->references('id')->on('scholars')->onDelete('cascade');
             $table->timestamps();
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_lists');
+        Schema::dropIfExists('enrolled_lists');
     }
 };

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->increments('id');
             $table->tinyInteger('years');
             $table->string('type')->default('n/a');
+            $table->string('certification')->default('n/a');
+            $table->string('validity')->default('n/a');
             $table->integer('school_id')->unsigned()->index();
             $table->foreign('school_id')->references('id')->on('school_campuses')->onDelete('cascade');
             $table->integer('course_id')->unsigned()->index();

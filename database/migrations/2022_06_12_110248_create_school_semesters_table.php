@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('semester_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->integer('school_id')->unsigned()->index();
             $table->foreign('school_id')->references('id')->on('school_campuses')->onDelete('cascade');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

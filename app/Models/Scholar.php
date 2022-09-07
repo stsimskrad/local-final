@@ -64,7 +64,7 @@ class Scholar extends Model
     
     public function benefits()
     {
-        return $this->hasMany('App\Models\GroupBenefit', 'scholar_id');
+        return $this->hasMany('App\Models\BenefitList', 'scholar_id');
     } 
 
     public function getUpdatedAtAttribute($value)

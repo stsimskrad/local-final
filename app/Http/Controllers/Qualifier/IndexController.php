@@ -71,8 +71,9 @@ class IndexController extends Controller
     }
 
     public function store(Request $request){
+        $link = config('app.api_link');
         try{
-            $url = 'http://main.test/api/endorsement/store';
+            $url = $link.'/api/endorsement/store';
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -118,8 +119,9 @@ class IndexController extends Controller
 
     public function create(){
         $region_code = $this->agency();
+        $link = config('app.api_link');
         try{
-            $url = 'http://main.test/api/endorsements/'.$region_code;
+            $url = $link.'/api/endorsements/'.$region_code;
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,

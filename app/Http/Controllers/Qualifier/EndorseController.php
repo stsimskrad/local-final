@@ -11,9 +11,10 @@ use Illuminate\Http\Request;
 class EndorseController extends Controller
 {
     public function index(){
+        $link = config('app.api_link');
         $region_code = $this->agency();
         try{
-            $url = 'http://main.test/api/endorsements/'.$region_code;
+            $url = $link.'/api/endorsements/'.$region_code;
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,

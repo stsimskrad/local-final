@@ -138,7 +138,7 @@
                     <Create v-else-if="show == 'create'" @status="message" :height="height" :user="user"
                     :dropdowns="dropdowns" ref="create" />
                     <Lists v-else-if="show == 'lists'" @status="message" :lists="lists" :selected="selected" :user="user.code" ref="lists" />
-                    <Default v-else />
+                    <Default :dropdowns="dropdowns" v-else />
                 </div>
             </div>
             <Course ref="course"/>

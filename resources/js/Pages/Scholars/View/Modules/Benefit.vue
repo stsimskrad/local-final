@@ -21,30 +21,26 @@
             <thead class="thead-light">
                 <tr class="font-size-11">
                     <th>Academic Year</th>
-                    <th class="text-center">Month</th>
-                    <th class="text-center">Type</th>
-                    <th class="text-center">Amount</th>
-                    <th class="text-center">Created at</th>
+                    <th class="text-center">Semester</th>
+                    <th class="text-center">Created At</th>
+                    <th class="text-center">Benefit Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody class="align-middle">
                 <tr v-for="info in lists" v-bind:key="info.id" style="cursor: pointer;">
-                    <td>
-                        <h5 class="font-size-13 mb-0 text-primary">{{ info.academic_year }}</h5>
-                        <p class="font-size-11 text-muted mb-0">{{ info.semester }}</p>
-                    </td>
-                    <td class="text-center">{{ info.month }}</td>
+                    <td class="fw-bold">{{ info.academic_year }}</td>
+                    <td class="text-center font-size-12">{{ info.semester }}</td>
+                    <td class="text-center font-size-12">{{ info.created_at }}</td>
                     <td class="text-center">
-                        <span v-if="info.is_regular" class="badge bg-success">Regular</span>
-                        <span v-else class="badge bg-danger">Summer</span>
+                        <span v-if="info.benefit_completed" class="badge bg-success">Completed</span>
+                        <span v-else class="badge bg-danger">Incomplete</span>
                     </td>
-                    <td class="text-center">{{ info.total }}</td>
-                    <td class="text-center font-size-11">{{ info.created_at }}</td>
-                    <td class="text-center text-success fw-bold font-size-11">
-                        <button @click="view(info.lists,info.total)" type="button" class="btn btn-primary btn-sm btn-rounded">
-                            View </button>
-                    </td>
+                    <td class="text-end text-success fw-bold font-size-11">
+                        <button @click="view(info.benefits)" type="button" class="btn btn-primary btn-sm btn-rounded">
+                            List of Benefits
+                        </button>
+                    </td> 
                 </tr>
                 <tr v-if="lists.length == 0">
                     <td class="text-center" colspan="7">
@@ -122,8 +118,8 @@ export default {
             .catch(err => console.log(err));
         },
 
-        view(lists,total){
-            this.$refs.lists.set(lists,total);
+        view(lists){
+            this.$refs.lists.set(lists,'benefits');
         }
     }
 }

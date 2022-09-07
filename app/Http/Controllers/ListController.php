@@ -19,6 +19,7 @@ use App\Models\LocationBarangay;
 use Illuminate\Http\Request;
 use App\Http\Resources\DefaultResource;
 use App\Http\Resources\School\SearchResource;
+use App\Http\Resources\Scholar\FindResource;
 
 class ListController extends Controller
 {
@@ -95,11 +96,11 @@ class ListController extends Controller
 
     public function scholars(Request $request){
         $keyword = $request->input('word');
-        $data = Scholar::with('profile')
+        $data = Scholar::with('profile')->with('education.school.semesters.semester')
         ->whereHas('profile',function ($query) use ($keyword) {
             $query->where(\DB::raw('concat(firstname," ",lastname)'), 'LIKE', '%'.$keyword.'%')->orWhere(\DB::raw('concat(lastname," ",firstname)'), 'LIKE', '%'.$keyword.'%');
         })->get()->take(5);
-        return DefaultResource::collection($data);
+        return FindResource::collection($data);
     }
 
     public function courses(Request $request){

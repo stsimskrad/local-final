@@ -13,6 +13,7 @@ class IndexResource extends JsonResource
         $hashids = new Hashids('krad',10);
         $id = $hashids->encode($this->id);
         $this->education->courseInfo = ['name' => $info->course];
+        $this->education->schoolInfo = ['name' => $info->school];
         $this->profile->address->info = ['info' => $info->address];
         
         return [

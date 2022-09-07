@@ -10,7 +10,7 @@
             <div class="row font-size-11 mt-2">
                 <div class="col-sm-12">
                     <p class="fw-bold text-danger mb-0">{{user.address.name.toUpperCase()}}</p>
-                    <p class="fw-bold text-dark mb-0">{{ (user.education.school != 'n/a') ? user.education.school.name : user.education.school}}</p>
+                    <p class="fw-bold text-dark mb-0">{{ (!Object.keys(user.education.school).includes('name'))  ? user.education.school : user.education.school.name }}</p>
                     <p class="text-dark mb-0">{{user.education.course }} </p>
                 </div>
             </div>

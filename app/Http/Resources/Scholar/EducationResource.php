@@ -11,7 +11,7 @@ class EducationResource extends JsonResource
     {
         return [
             'is_completed' => $this->is_completed,
-            'school' => ($this->school == null) ? 'n/a' : new SchoolResource($this->school),
+            'school' => ($this->school == null) ? $this->schoolInfo['name'] : new SchoolResource($this->school),
             'level' => ($this->level == null) ? 'n/a' : $this->level,
             'course' => ($this->course == null) ? $this->courseInfo['name'] : $this->course,
             'subcourse' => $this->subcourse,

@@ -14,7 +14,8 @@ class SchoolSemester extends Model
         'start_at',
         'end_at',
         'semester_id',
-        'school_id'
+        'school_id',
+        'is_active'
     ];
 
     public function school()
@@ -26,6 +27,11 @@ class SchoolSemester extends Model
     {
         return $this->belongsTo('App\Models\ListDropdown', 'semester_id', 'id');
     }
+
+    public function benefits()
+    {
+        return $this->hasMany('App\Models\BenefitList', 'school_semester_id');
+    } 
 
     // public function getStartAtAttribute($value)
     // {

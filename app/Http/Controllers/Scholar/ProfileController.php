@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Scholar;
 use Hashids\Hashids;
 use App\Models\Scholar;
 use App\Models\ScholarEnrollment;
-use App\Models\FinancialGroupMonthReleaseScholar;
+use App\Models\BenefitList;
+use App\Models\BenefitRelease;
+use App\Models\EnrolledList;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\Scholar\IndexResource;
@@ -62,7 +64,7 @@ class ProfileController extends Controller
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($request->id);
 
-        $data = ScholarEnrollment::where('scholar_id',$id)
+        $data = ScholarEnrollment::with('lists')->where('scholar_id',$id)
             ->when($request->keyword, function ($query, $keyword) {
                 $query->whereHas('semester',function ($query) use ($keyword) {
                     $query->where('academic_year', 'LIKE', '%'.$keyword.'%');
@@ -78,14 +80,21 @@ class ProfileController extends Controller
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($request->id);
 
-        $data = FinancialGroupMonthReleaseScholar::where('scholar_id',$id)
-            ->with('release.month.group.semester')->with('lists.benefit')
-            // ->when($request->keyword, function ($query, $keyword) {
-            //     $query->whereHas('semester',function ($query) use ($keyword) {
-            //         $query->where('academic_year', 'LIKE', '%'.$keyword.'%');
-            //     });
-            // })
-            ->orderBy('created_at','DESC')
+        $data = EnrolledList::with('semester.benefits.benefit','semester.benefits.status','semester.semester')
+        ->where('scholar_id',$id)
+        ->whereHas('benefits',function ($query) use ($id) {
+            $query->where('scholar_id',$id);
+        })
+        // $data = BenefitRelease::with('benefits.benefit')
+        //     // ->when($request->keyword, function ($query, $keyword) {
+        //     //     $query->whereHas('semester',function ($query) use ($keyword) {
+        //     //         $query->where('academic_year', 'LIKE', '%'.$keyword.'%');
+        //     //     });
+        //     // })
+        //     ->whereHas('benefits',function ($query) use ($id) {
+        //         $query->where('scholar_id',$id);
+        //     })
+        //     ->orderBy('created_at','DESC')
             ->paginate($request->counts)
             ->withQueryString();
         return BenefitResource::collection($data);

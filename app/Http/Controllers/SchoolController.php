@@ -61,6 +61,7 @@ class SchoolController extends Controller
             case 'semester': 
                 $message = 'Semester successfully created. Thanks';
                 $data = new DefaultResource(SchoolSemester::create($request->all()));
+                $update = SchoolSemester::where('id','!=',$data->id)->where('school_id',$data->school_id)->update(['is_active' => false]);
             break;
             case 'course': 
                 $message = 'Course successfully added. Thanks';

@@ -15,6 +15,7 @@ use App\Http\Requests\EnrollmentRequest;
 use App\Http\Resources\DefaultResource;
 use App\Http\Resources\Scholar\EvaluationResource;
 use App\Http\Resources\Scholar\Sub\EnrollmentResource;
+use App\Http\Resources\Scholar\Sub\EnrolledResource;
 
 class IndexController extends Controller
 {
@@ -24,6 +25,13 @@ class IndexController extends Controller
     {       
         if($request->search){
             $keyword = $request->keyword;
+            if($request->type == 'enrolled'){
+                $data = ScholarEnrollment::with('scholar.profile','user.profile','level','semester.semester','semester.school.school')
+                ->orderBy('created_at','DESC')
+                ->paginate($request->counts)
+                ->withQueryString();
+                return EnrolledResource::collection($data);
+            }
             if($keyword != ''){
                 $data = Scholar::with('profile')->with('status')->with('enrollments')->with('education.school.school','education.course','education.level')
                 ->when($request->keyword, function ($query, $keyword) {
@@ -46,7 +54,7 @@ class IndexController extends Controller
             $hashids = new Hashids('krad',10);
             $scholar_id = $hashids->decode($request->scholar_id);
 
-            $this->financialGroup($request);
+            $this->newFinancialGroup($request);
             
             $attachments = [
                 'grades' => [],

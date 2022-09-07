@@ -6,6 +6,7 @@ use App\Models\Scholar;
 use App\Models\ListDropdown;
 use App\Models\ListProgram;
 use App\Models\ListExpense;
+use App\Models\ListPrivilege;
 use App\Models\LocationRegion;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -72,6 +73,7 @@ class HandleInertiaRequests extends Middleware
             'dropdowns' => ListDropdown::all(),
             'programs' => ListProgram::all(),
             'expenses' => ListExpense::all(),
+            'privileges' => ListPrivilege::all()
         ]);
     }
 }

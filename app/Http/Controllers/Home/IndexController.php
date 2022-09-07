@@ -27,7 +27,7 @@ class IndexController extends Controller
         if($request->type == 'lists'){
             $array = [
                 'staffs' => $this->staffs(),
-                'academic_year' => $this->academicyear(),
+                // 'academic_year' => $this->academicyear(),
                 'qualifiers' => $this->qualifiers()
             ];
             return $array;

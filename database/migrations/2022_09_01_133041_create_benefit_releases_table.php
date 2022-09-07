@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('group_months', function (Blueprint $table) {
+        Schema::create('benefit_releases', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->date('month');
-            $table->integer('group_id')->unsigned()->index();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->string('number',2);
+            $table->json('attachment');
+            $table->string('dv_no')->nullable();
+            $table->decimal('total',12,2);
+            $table->bigInteger('added_by')->unsigned()->index();
+            $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_months');
+        Schema::dropIfExists('benefit_releases');
     }
 };

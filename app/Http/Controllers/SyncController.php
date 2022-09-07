@@ -10,6 +10,7 @@ use App\Models\ListProgram;
 use App\Models\ListBenefit;
 use App\Models\School;
 use App\Models\SchoolCampus;
+use App\Models\SchoolCourse;
 use App\Models\LocationRegion;
 use App\Models\LocationBarangay;
 use App\Models\LocationProvince;
@@ -18,6 +19,13 @@ use Illuminate\Http\Request;
 
 class SyncController extends Controller
 {
+    public $link;
+
+    public function __construct()
+    {
+        $this->link = config('app.api_link');
+    }
+
     public function addresses($type,$category){
         if($category == 'all'){
             $arrays = ['regions','provinces','municipalities','barangays'];
@@ -29,7 +37,7 @@ class SyncController extends Controller
 
         foreach($arrays as $array){
             try{
-                $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/location/'.$array;
+                $url = $this->link.'/api/01101011%2001110010%2001100001%2001100100/location/'.$array;
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
@@ -115,7 +123,7 @@ class SyncController extends Controller
 
     public function lists($type,$category){
         if($category == 'all'){
-            $arrays = ['agencies','dropdowns','expenses','programs','benefits'];
+            $arrays = ['agencies','dropdowns','expenses','programs','benefits','courses'];
         }else{
             $arrays = [];
             array_push($arrays,strtolower($category));
@@ -124,7 +132,7 @@ class SyncController extends Controller
 
         foreach($arrays as $array){
             try{
-                $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/'.$array;
+                $url = $this->link.'/api/01101011%2001110010%2001100001%2001100100/'.$array;
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
@@ -253,7 +261,7 @@ class SyncController extends Controller
         // }
 
         try{
-            $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/schools';
+            $url = $this->link.'/api/01101011%2001110010%2001100001%2001100100/schools';
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -281,7 +289,12 @@ class SyncController extends Controller
                     $q = School::insertOrIgnore($arr);
                     foreach($data->campuses as $campus)
                     {   
-                        $q = SchoolCampus::insertOrIgnore((array)$campus);
+                        $lst1 = (array)$campus;
+                        $lst = array_pop($lst1);
+                        $q = SchoolCampus::insertOrIgnore($lst1);
+                        foreach($lst as $course){
+                            $q = SchoolCourse::insertOrIgnore((array)$course);
+                        }
                     } 
                 }
             } 
@@ -346,7 +359,7 @@ class SyncController extends Controller
     }
 
     public function allSchools(){
-        $url = 'http://main.test/api/01101011%2001110010%2001100001%2001100100/schools/all';
+        $url = $this->link.'/api/01101011%2001110010%2001100001%2001100100/schools/all';
         $curl = curl_init();
         curl_setopt_array($curl, array(
         CURLOPT_URL => $url,

@@ -27,6 +27,7 @@
                     <th class="text-center">No Grades</th>
                     <th class="text-center">Status</th>
                     <th class="text-center">Created at</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody class="align-middle">
@@ -46,6 +47,11 @@
                         <span v-else class="badge bg-danger">Not Completed</span>
                     </td>
                     <td class="text-center font-size-11">{{ info.created_at }}</td>
+                    <td class="text-end text-success fw-bold font-size-11">
+                        <button @click="view(info.lists)" type="button" class="btn btn-primary btn-sm btn-rounded">
+                            List of Subjects
+                        </button>
+                    </td> 
                 </tr>
                 <tr v-if="lists.length == 0">
                     <td class="text-center" colspan="7">
@@ -55,18 +61,19 @@
             </tbody>
         </table>
     </div>
-    
+    <Lists ref="lists"/>
     <WindowPortal v-model="open" ref="open">
         <HelloWorld ref="viewpdf"/>
     </WindowPortal>
 </template>
 <script>
+import Lists from "../Modals/Lists.vue";
 import WindowPortal from "@/Shared/Window/WindowPortal";
 import HelloWorld from "@/Shared/Window/HelloWorld";
 import Layout from "@/Shared/Layout/Layout";
 import profile from "@/Pages/Scholars/View/Index";
 export default {
-    components : {WindowPortal, HelloWorld},
+    components : { WindowPortal, HelloWorld, Lists },
     layout: (h,page) => {
         return h(Layout, [
             h(profile,[page])
@@ -125,7 +132,11 @@ export default {
             this.open = true;
             this.attachment = attachment;
             this.$refs.open.set(attachment);
+        },
+
+        view(lists){
+            this.$refs.lists.set(lists,'enrollment');
         }
-    }
+    },
 }
 </script>>

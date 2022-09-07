@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('list_privileges', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('academic_year',20);
-            $table->boolean('is_regular');
+            $table->tinyIncrements('id');
+            $table->string('name')->unique();
+            $table->string('type');
+            $table->decimal('regular_amount',12,2);
+            $table->decimal('summer_amount',12,2);
+            $table->boolean('is_fixed');
             $table->boolean('is_active')->default(1);
-            $table->tinyInteger('semester_id')->unsigned()->index();
-            $table->foreign('semester_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
+            $table->boolean('is_reimburseable')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('list_privileges');
     }
 };

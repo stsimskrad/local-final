@@ -19,13 +19,10 @@ return new class extends Migration
             $table->string('code')->unique()->nullable();
             $table->string('name')->unique();
             $table->string('avatar',200)->default('school.jpg');
-            $table->boolean('is_upsystem')->default(0);
             $table->tinyInteger('class_id')->unsigned()->index();
             $table->foreign('class_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
-            $table->tinyInteger('term_id')->unsigned()->index();
-            $table->foreign('term_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
-            $table->tinyInteger('grading_id')->unsigned()->index();
-            $table->foreign('grading_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
+            $table->boolean('is_upsystem')->default(0);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

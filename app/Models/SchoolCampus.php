@@ -15,7 +15,9 @@ class SchoolCampus extends Model
         'address',
         'is_main',
         'municipality_code',
-        'school_id'
+        'school_id',
+        'term_id',
+        'grading_id',
     ];
 
     public function municipality()
@@ -42,6 +44,16 @@ class SchoolCampus extends Model
     {
         return $this->hasMany('App\Models\ScholarEducation', 'school_id');
     } 
+
+    public function term()
+    {
+        return $this->belongsTo('App\Models\ListDropdown', 'term_id', 'id');
+    }
+
+    public function grading()
+    {
+        return $this->belongsTo('App\Models\ListDropdown', 'grading_id', 'id');
+    }
 
     public function getCampusAttribute($value){
         return strtoupper($value);

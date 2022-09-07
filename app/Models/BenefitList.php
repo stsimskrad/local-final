@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupBenefit extends Model
+class BenefitList extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'month', 'group_id', 'benefit_id', 'scholar_id', 'amount', 'release_type', 'status_id'
+        'month', 'benefit_id', 'scholar_id', 'amount', 'release_type', 'status_id', 'release_id', 'school_semester_id', 'attachment'
     ];
-
-    public function group()
-    {
-        return $this->belongsTo('App\Models\Group', 'group_id', 'id');
-    }
-
+    
     public function scholar()
     {
         return $this->belongsTo('App\Models\Scholar', 'scholar_id', 'id');
@@ -25,7 +20,12 @@ class GroupBenefit extends Model
 
     public function benefit()
     {
-        return $this->belongsTo('App\Models\ListPrivilige', 'benefit_id', 'id');
+        return $this->belongsTo('App\Models\ListPrivilege', 'benefit_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\ListDropdown', 'status_id', 'id');
     }
 
     public function getMonthAttribute($value)

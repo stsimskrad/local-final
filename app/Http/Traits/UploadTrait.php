@@ -29,7 +29,7 @@ trait UploadTrait {
             return $attachment = [
                 'file' => $file_path,
                 'added_by' => \Auth::user()->id,
-                'created_at' => now()
+                'created_at' => date('M d, Y g:i a', strtotime(now()))
             ];
         }
     }
@@ -37,7 +37,6 @@ trait UploadTrait {
     public function grade($request,$enrollment){
         if($request->hasFile('files'))
         {   
-           
             $level = ListDropdown::where('id',$enrollment->level_id)->pluck('name');
             $semester = SchoolSemester::where('id',$enrollment->semester_id)->first();
             $academic_year = $semester['academic_year'];
@@ -56,7 +55,26 @@ trait UploadTrait {
             return $attachment = [
                 'file' => $file_path,
                 'added_by' => \Auth::user()->id,
-                'created_at' => now()
+                'created_at' => date('M d, Y g:i a', strtotime(now()))
+            ];
+        }
+    }
+
+    public function reimburse($request){
+        if($request->hasFile('files')){
+            $files = $request->file('files');   
+            foreach ($files as $key=>$file) {
+                if($key == 0){
+                    $file_name = 'reimburse_'.date("y-m-dhis").'.'.$file->getClientOriginalExtension();
+                }else{
+                    $file_name = 'reimburse_'.date("y-m-dhis").'-'.$key.'.'.$file->getClientOriginalExtension();
+                }
+                $file_path = $file->storeAs('reimbursements', $file_name, 'public');
+            }
+            return $attachment = [
+                'file' => $file_path,
+                'added_by' => \Auth::user()->id,
+                'created_at' => date('M d, Y g:i a', strtotime(now()))
             ];
         }
     }

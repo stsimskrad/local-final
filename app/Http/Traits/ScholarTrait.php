@@ -37,9 +37,10 @@ trait ScholarTrait { //Storing Scholar
         $data = Scholar::findOrFail($test->id);
 
         if($data){
+            $link = config('app.api_link');
             if($request->type == 'endorsed'){
                 try{
-                    $url = 'http://main.test/api/endorsement/update';
+                    $url = $link.'/api/endorsement/update';
                     $curl = curl_init();
                     curl_setopt_array($curl, array(
                     CURLOPT_URL => $url,
