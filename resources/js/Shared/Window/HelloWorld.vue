@@ -1,18 +1,17 @@
 <template>
-  <pdf :src="currentUrl+'/storage/'+attachment">
+  <vue-pdf-embed :source="currentUrl+'/storage/'+attachment">
     <template slot="loading">
       loading content here...
     </template>
-  </pdf>
+  </vue-pdf-embed>
 </template>
 
 <script>
-import pdf from 'pdfvuer'
-
+import VuePdfEmbed from 'vue-pdf-embed'
 export default {
   props: ['attachment'],
   components: {
-    pdf
+    VuePdfEmbed
   },
   data(){
     return{

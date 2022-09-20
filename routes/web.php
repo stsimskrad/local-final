@@ -12,7 +12,6 @@ Route::middleware(['role:Super Administrator','auth'])->group(function () {
 });
 
 Route::middleware(['role:Scholarship Coordinator, Scholarship Staff','auth'])->group(function () {
-    Route::resource('qualifiers', App\Http\Controllers\Qualifier\IndexController::class);
     Route::resource('scholars', App\Http\Controllers\Scholar\IndexController::class);
     Route::get('/scholars/{id}/{type}', [App\Http\Controllers\Scholar\ProfileController::class, 'index']);
     Route::get('/scholar/show', [App\Http\Controllers\Scholar\ProfileController::class, 'show']);
@@ -27,6 +26,8 @@ Route::middleware(['role:Scholarship Coordinator, Scholarship Staff','auth'])->g
 });
 
 Route::middleware(['auth'])->group(function () {
+    
+    Route::resource('qualifiers', App\Http\Controllers\Qualifier\IndexController::class);
     Route::resource('schools', App\Http\Controllers\SchoolController::class);
     Route::resource('events', App\Http\Controllers\EventController::class);
 
@@ -62,8 +63,6 @@ Route::prefix('public')->group(function(){
 // Route::get('/scholars/dqOXep6an9/benefit', function () {  return inertia('Scholars/View/Modules/Benefit'); });
 
 Route::get('/installation', function () {  return inertia('Home/Installation'); });
-Route::get('/orientation', function () {  return inertia('Orientation/Index'); });
-Route::get('/orientation/zdn', function () {  return inertia('Orientation/Zdn'); });
 
 require __DIR__.'/auth.php';
 require __DIR__.'/scholar.php';

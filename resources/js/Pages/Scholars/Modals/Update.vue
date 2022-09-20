@@ -151,7 +151,7 @@
                     },
                     onError: (response) =>{
                         this.errors.push(response);
-                        console.log(this.errors[0].course_id)
+                        // console.log(this.errors[0].course_id)
                     }
                 });
             },
@@ -172,6 +172,7 @@
                 if(value.length > 5){
                     axios.post(this.currentUrl + '/lists/search/courses', {
                         word: value,
+                        school_id: (!Object.keys(this.user.education.school).includes('id')) ? this.school.id : this.user.education.school.id,
                     })
                     .then(response => {
                         this.courses = response.data.data;

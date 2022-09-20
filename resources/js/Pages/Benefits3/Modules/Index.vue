@@ -48,6 +48,11 @@
                             <button @click="view(list)" type="button" class="bg-light btn btn-sm btn-light me-1">View</button>
                         </td>
                     </tr>
+                    <tr v-if="lists.length == 0">
+                        <td class="text-center text-muted" colspan="7">
+                            No releases found.
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -77,7 +82,6 @@
         },
 
         created(){
-            console.log(this.count);
             this.fetch();
         },
     

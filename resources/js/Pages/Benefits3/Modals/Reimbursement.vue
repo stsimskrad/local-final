@@ -47,7 +47,7 @@
                     </multiselect> 
                 </div>
                 <div class="col-md-6 mt-1">
-                    <label>Attachments:  <span v-if="errors.amount" v-text="'Attachment is required'" class="haveerror"></span></label>
+                    <label>Attachments:  <span v-if="errors.attachment" v-text="'Attachment is required'" class="haveerror"></span></label>
                     <input multiple type="file" @change="uploadFieldChange" class="form-control" style="width: 100%;" id="formFileSm"/>
                 </div>
             </div>
@@ -137,24 +137,12 @@ export default {
                 forceFormData: true,
                 onSuccess: (response) => {
                     this.showModal = false;
+                    this.hide();
                 },
                 onError: () => {
                     this.errors = this.$page.props.errors;
                 }
             });
-            // this.form = this.$inertia.form({    
-            //     scholar_id: this.scholar.id,
-            //     school_semester_id: this.semester.id,
-            //     benefit_id: this.privilege.id,
-            //     amount: this.amount,
-            // })
-
-            // this.form.post('/reimbursements',{
-            //     preserveScroll: true,
-            //     onSuccess: (response) => {
-            //         this.hide();
-            //     }
-            // });
         },
 
         asyncScholar(value) {
@@ -179,6 +167,14 @@ export default {
                 this.attachments.push(files[i]);
             }
         },
+
+        hide(){
+            this.attachments = [];
+            this.scholar = '';
+            this.semester = '';
+            this.privilege = '';
+            this.amount = '';
+        }
     }
 }
 </script>

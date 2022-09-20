@@ -74,13 +74,13 @@
                             <div class="row" style="margin-top: 20px;">
                                 <div class="col-md-4">
                                     <div class="custom-control custom-radio mb-3">
-                                        <input type="radio" id="customRadio1" class="custom-control-input mr-2"  value="Male" v-model="form.gender">
+                                        <input type="radio" id="customRadio1" class="custom-control-input me-2"  value="Male" v-model="form.gender">
                                         <label class="custom-control-label" for="customRadio1">Male</label>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="custom-control custom-radio mb-3">
-                                        <input type="radio" id="customRadio2" class="custom-control-input mr-2" value="Female" v-model="form.gender">
+                                        <input type="radio" id="customRadio2" class="custom-control-input me-2" value="Female" v-model="form.gender">
                                         <label class="custom-control-label" for="customRadio2">Female</label>
                                     </div>
                                 </div>
@@ -200,7 +200,8 @@
             hide(){
                 this.form.reset().clearErrors();
                 this.showModal = false;
-                this.isLoading = false; 
+                this.isLoading = false;
+                this.photo.url = '';
             },
 
             toggleShow() {

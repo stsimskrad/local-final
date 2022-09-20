@@ -30,16 +30,27 @@
                         </div>
                     </div>
                     <div class="card-body border-top">
-                        
+                        <!-- <div class="text-center">
+                            <div class="avatar-sm mx-auto mb-4"><span
+                                    class="avatar-title rounded-circle bg-primary bg-soft font-size-24"><i
+                                        class="mdi mdi-facebook text-primary"></i></span></div>
+                            <p class="font-16 text-muted mb-2"></p>
+                            <h5><a href="javascript: void(0);" class="text-dark"> Reimbursements - <span
+                                        class="text-muted font-16">125 sales</span></a></h5>
+                            <p class="text-muted"> Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut
+                                libero venenatis faucibus tincidunt. </p><a href="javascript: void(0);"
+                                class="text-primary font-16"> Learn more <i class="mdi mdi-chevron-right"></i></a>
+                        </div> -->
                     </div>
                     <div class="card-footer bg-transparent border-top">
                         <div class="row g-1 mt-1 mb-1">
-                            <div class="col-md-6 d-grid mt-0">
-                                <button class="btn btn-outline-light" type="button" block="">Add Benefit</button>
+                            <div class="col-md-12 d-grid mt-0">
+                                <button @click="newReimburse" class="btn btn-outline-light" type="button" block="">Reimbursements</button>
                             </div>
-                            <div class="col-md-6 d-grid mt-0">
-                                <button @click="reimburse" class="btn btn-primary" type="button" block="">Reimbursement</button>
-                            </div>
+                            <!-- <div class="col-md-6 d-grid mt-0">
+                                <button @click="reimburse" class="btn btn-primary" type="button"
+                                    block="">Reimbursement</button>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -50,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <Reimbursement :privileges="privileges" ref="reimburse"/>
+        <Reimbursement :privileges="privileges" ref="reimburse" />
     </div>
 </template>
 <script>
@@ -64,7 +75,7 @@
             Reimbursement
         },
         inject: ['height', 'count3'],
-        props: ['dropdowns','privileges'],
+        props: ['dropdowns', 'privileges'],
         data() {
             return {
                 currentUrl: window.location.origin,
@@ -106,7 +117,12 @@
                 this.$refs.main.type(this.type, this.latest);
             },
 
-            reimburse(){
+            newReimburse() {
+                this.type = 'reimburse';
+                this.$refs.main.type(this.type,'');
+            },
+
+            reimburse() {
                 this.$refs.reimburse.set();
             }
         }

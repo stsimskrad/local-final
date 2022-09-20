@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('dv_no')->nullable();
             $table->date('month');
             $table->json('attachment');
+            $table->boolean('is_reimbursed')->default(0);
             $table->tinyInteger('status_id')->unsigned()->index();
             $table->foreign('status_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->tinyInteger('benefit_id')->unsigned()->index();

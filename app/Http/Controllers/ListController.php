@@ -19,6 +19,7 @@ use App\Models\LocationBarangay;
 use Illuminate\Http\Request;
 use App\Http\Resources\DefaultResource;
 use App\Http\Resources\School\SearchResource;
+use App\Http\Resources\School\CourseListResource;
 use App\Http\Resources\Scholar\FindResource;
 
 class ListController extends Controller
@@ -105,8 +106,14 @@ class ListController extends Controller
 
     public function courses(Request $request){
         $keyword = $request->input('word');
-        $data = ListCourse::where('name','LIKE','%'.$keyword.'%')->get()->take(10);
-        return DefaultResource::collection($data);
+        $school_id = $request->input('school_id');
+        $data = SchoolCourse::with('course')->where('school_id',$school_id)
+        ->whereHas('course',function ($query) use ($keyword) {
+            $query->where('name','LIKE','%'.$keyword.'%');
+        })
+        ->get()->take(10);
+        // $data = ListCourse::where('name','LIKE','%'.$keyword.'%')->get()->take(10);
+        return CourseListResource::collection($data);
     }
 
     public function subcourses($school,$course){

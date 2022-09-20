@@ -187,7 +187,7 @@ export default {
         },
 
         downloadSchools(category, index) {
-            this.loading3 = true;
+            this.s = false;
             axios.get(this.currentUrl + '/sync/schools/download/local')
             .then(response => {
                 this.s = true;
@@ -199,7 +199,7 @@ export default {
 
         proceed()
         {
-            console.log(this.$page.props.auth.data.id);
+            // console.log(this.$page.props.auth.data.id);
             this.form.id = this.$page.props.auth.data.id;
             this.form.put('/users/update',{
                 preserveScroll: true,

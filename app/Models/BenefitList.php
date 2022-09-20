@@ -10,8 +10,14 @@ class BenefitList extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'month', 'benefit_id', 'scholar_id', 'amount', 'release_type', 'status_id', 'release_id', 'school_semester_id', 'attachment'
+        'month', 'benefit_id', 'scholar_id', 'amount', 'release_type', 'status_id', 'release_id', 'school_semester_id', 'attachment', 'is_reimbursed'
     ];
+
+    public function semester()
+    {
+        return $this->belongsTo('App\Models\SchoolSemester', 'school_semester_id', 'id');
+    }
+
     
     public function scholar()
     {

@@ -124,7 +124,7 @@
                         </div>
                     </div> -->
 
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body" style="height: 218px;">
                             <div class="card border shadow-none">
                                 <div class="p-1">
@@ -171,13 +171,13 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
         </div>
     </div>
-    <Group @status="fetch" :dropdowns="dropdowns" ref="group"/>
+    <!-- <Group @status="fetch" :dropdowns="dropdowns" ref="group"/> -->
 </template>
 <script>
 import Header from "@/Shared/Header.vue";
@@ -225,29 +225,29 @@ import Request from './Sections/Request.vue';
         methods: {
             fetch() {
                 axios.get(this.currentUrl + '/gege', {
-                        params: {
-                            type: 'lists'
-                        }
-                    })
-                    .then(response => {
-                        this.staffs = response.data.staffs;
-                        // this.academic_year = response.data.academic_year;
-                        this.qualifiers = response.data.qualifiers;
-                        // (this.academic_year == null) ? this.$refs.group.set() : '';
-                    })
-                    .catch(err => console.log(err));
+                    params: {
+                        type: 'lists'
+                    }
+                })
+                .then(response => {
+                    this.staffs = response.data.staffs;
+                    // this.academic_year = response.data.academic_year;
+                    this.qualifiers = response.data.qualifiers;
+                    // (this.academic_year == null) ? this.$refs.group.set() : '';
+                })
+                .catch(err => console.log(err));
             },
 
             fetchTotals() {
                 axios.get(this.currentUrl + '/reports', {
-                        params: {
-                            type: 'totals'
-                        }
-                    })
-                    .then(response => {
-                        this.totals = response.data;
-                    })
-                    .catch(err => console.log(err));
+                    params: {
+                        type: 'totals'
+                    }
+                })
+                .then(response => {
+                    this.totals = response.data;
+                })
+                .catch(err => console.log(err));
             },
 
             ucwords(str) {

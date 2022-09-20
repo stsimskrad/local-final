@@ -7,7 +7,7 @@ use App\Models\ListCourse;
 use App\Models\ListDropdown;
 use App\Models\ListExpense;
 use App\Models\ListProgram;
-use App\Models\ListBenefit;
+use App\Models\ListPrivilege;
 use App\Models\School;
 use App\Models\SchoolCampus;
 use App\Models\SchoolCourse;
@@ -123,7 +123,7 @@ class SyncController extends Controller
 
     public function lists($type,$category){
         if($category == 'all'){
-            $arrays = ['agencies','dropdowns','expenses','programs','benefits','courses'];
+            $arrays = ['agencies','dropdowns','expenses','programs','privileges','courses'];
         }else{
             $arrays = [];
             array_push($arrays,strtolower($category));
@@ -168,8 +168,8 @@ class SyncController extends Controller
                         case 'programs':
                             ($type == 'check') ? $programs[] = (array)$data : $q = ListProgram::insertOrIgnore((array)$data); 
                         break;
-                        case 'benefits':
-                            ($type == 'check') ? $benefits[] = (array)$data : $q = ListBenefit::insertOrIgnore((array)$data); 
+                        case 'privileges':
+                            ($type == 'check') ? $privileges[] = (array)$data : $q = ListPrivilege::insertOrIgnore((array)$data); 
                         break;
                         case 'schools':
                             $arr = (array)$data;
@@ -210,9 +210,9 @@ class SyncController extends Controller
                     'count' => count($expenses)
                 ],
                 'Benefits' => [
-                    'data' => ListBenefit::all(),
-                    'downloaded' => ListBenefit::count(),
-                    'count' => count($benefits)
+                    'data' => ListPrivilege::all(),
+                    'downloaded' => ListPrivilege::count(),
+                    'count' => count($privileges)
                 ],
                 'Programs' => [
                     'data' => ListProgram::all(),
@@ -242,8 +242,8 @@ class SyncController extends Controller
                 case 'programs':
                     return ListProgram::count();
                 break;
-                case 'benefits':
-                    return ListBenefit::count();
+                case 'privileges':
+                    return ListPrivilege::count();
                 break;
             }
         }

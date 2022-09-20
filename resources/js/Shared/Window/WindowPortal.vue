@@ -1,16 +1,15 @@
 <template>
     <div>
-        <pdf v-if="show" :src="currentUrl+'/storage/'+attachment">
+        <vue-pdf-embed v-if="show" :source="currentUrl+'/storage/'+attachment">
             <template slot="loading">
                 loading content here...
             </template>
-        </pdf>
+        </vue-pdf-embed>
     </div>
 </template>
 
 <script>
-    import pdf from 'pdfvuer';
-
+    import VuePdfEmbed from 'vue-pdf-embed'
     function copyStyles(sourceDoc, targetDoc) {
         Array.from(sourceDoc.styleSheets).forEach(styleSheet => {
             if (styleSheet.cssRules) {
@@ -36,7 +35,7 @@
 
     export default {
         components: {
-            pdf
+            VuePdfEmbed
         },
         name: 'window-portal',
         model: {

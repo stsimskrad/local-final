@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(AllotmentListsTableSeeder::class);
         // $this->call(AllotmentBalancesTableSeeder::class);
         // $this->call(DisbursementsTableSeeder::class);
-        $this->call(ListPrivilegesTableSeeder::class);
-        $this->call(ListCoursesTableSeeder::class);
+        // $this->call(ListPrivilegesTableSeeder::class);
+        // $this->call(ListCoursesTableSeeder::class);
     }
 }

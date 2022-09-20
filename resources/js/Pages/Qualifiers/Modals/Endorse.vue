@@ -115,6 +115,7 @@
                 if(value.length > 5){
                     axios.post(this.currentUrl + '/lists/search/courses', {
                         word: value,
+                        school_id: this.user.school.id,
                     })
                     .then(response => {
                         this.courses = response.data.data;
