@@ -209,7 +209,7 @@ class SyncController extends Controller
                     'downloaded' => ListExpense::count(),
                     'count' => count($expenses)
                 ],
-                'Benefits' => [
+                'Privileges' => [
                     'data' => ListPrivilege::all(),
                     'downloaded' => ListPrivilege::count(),
                     'count' => count($privileges)

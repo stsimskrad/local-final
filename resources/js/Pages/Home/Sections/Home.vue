@@ -1,9 +1,9 @@
 <template>
     <div class="row g-3">
-        <div class="col-md-7">
+        <div class="col-md-12">
             <div class="card-body border-top">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                         <div>
                             <p class="text-muted mb-1">teste</p>
                             <h5>$ 9148.23</h5>
@@ -16,10 +16,10 @@
                                     class="badge bg-success ms-1 align-bottom">+ 1.3
                                     %</span></h5>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="card-body border-top" style="height: 155px;">
+            <div class="card-body border-top" style="height: 205px;">
                                 
             </div>
             <div class="card-body border-top">
@@ -62,7 +62,7 @@
             </div>
         </div>
         
-        <div class="col-md-5">
+        <!-- <div class="col-md-5">
             <div class="mt-3">
                 <ul class="verti-timeline list-unstyled">
                     <li class="event-list">
@@ -112,6 +112,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>

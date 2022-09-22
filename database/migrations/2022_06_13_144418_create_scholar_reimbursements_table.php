@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_approved')->default(0);
             $table->boolean('is_reimbursed')->default(0);
             $table->tinyInteger('benefit_id')->unsigned()->index();
-            $table->foreign('benefit_id')->references('id')->on('list_benefits')->onDelete('cascade');
+            $table->foreign('benefit_id')->references('id')->on('list_privileges')->onDelete('cascade');
             $table->bigInteger('scholar_id')->unsigned()->index();
             $table->foreign('scholar_id')->references('id')->on('scholars')->onDelete('cascade');
             $table->bigInteger('checked_by')->unsigned()->index();

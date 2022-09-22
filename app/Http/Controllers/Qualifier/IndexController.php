@@ -12,6 +12,14 @@ use App\Http\Resources\Qualifier\IndexResource;
 
 class IndexController extends Controller
 {
+    public $link, $agency;
+
+    public function __construct()
+    {
+        $this->link = config('app.api_link');
+        $this->agency = config('app.agency');
+    }
+
     public function index(Request $request)
     {   
         if($request->search){
@@ -53,6 +61,35 @@ class IndexController extends Controller
     public function show($data){
         if($data == 'import'){
             return inertia('Qualifiers/Import');
+        }elseif($data == 'fetch'){
+
+            $region_code = ListAgency::where('id',$this->agency)->select('region_code')->first();
+
+            try{
+                $url = $this->link.'/api/qualifiers/'.$region_code['region_code'];
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                ));
+
+                $response = curl_exec($curl);
+                curl_close($curl);
+            //    $datas = response()->json(json_decode($response));
+                return $datas = json_decode($response);
+         
+                
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
         }else{
             return inertia('Qualifiers/Sync');
         }

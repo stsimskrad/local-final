@@ -10,7 +10,7 @@
 
                             <div class="avatar-md mx-auto">
                                 <div class="avatar-title rounded-circle bg-light">
-                                    <i class="bx bx-cloud-upload h1 mb-0 text-primary"></i>
+                                    <i class="bx bxs-file h1 mb-0 text-primary"></i>
                                 </div>
                             </div>
                             <div class="p-2 mt-4">

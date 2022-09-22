@@ -236,15 +236,10 @@
                     <!-- item-->
 
                     <b-dropdown-item> 
-                        <a>
+                        <Link href="/settings">
                             <i class="bx bx-user font-size-16 align-middle me-1"></i>
                            Profile
-                        </a>
-                    </b-dropdown-item>
-                    <b-dropdown-item class="d-block" href="javascript: void(0);">
-                        <span class="badge bg-success float-end">11</span>
-                        <i class="bx bx-wrench font-size-16 align-middle me-1"></i>
-                       Settings
+                        </Link>
                     </b-dropdown-item>
                     <b-dropdown-divider></b-dropdown-divider>
                     <Link href="/logout" method="post" as="button" class="dropdown-item text-danger">

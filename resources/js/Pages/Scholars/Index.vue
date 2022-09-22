@@ -7,8 +7,8 @@
 
                 <div class="row">
                     <div class="col-xl-6">
-                        <Link> 
-                            <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Create</button>
+                        <Link href="scholars/sync"> 
+                            <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Sync</button>
                         </Link>
                         <Link href="scholars/import">
                             <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Import</button>

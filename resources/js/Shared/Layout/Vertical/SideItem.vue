@@ -1,4 +1,4 @@
-
+<!--  -->
 <template>
 <div id="sidebar-menu">
     <ul id="side-menu" class="metismenu list-unstyled">

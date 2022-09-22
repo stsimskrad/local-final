@@ -26,7 +26,7 @@ Route::middleware(['role:Scholarship Coordinator, Scholarship Staff','auth'])->g
 });
 
 Route::middleware(['auth'])->group(function () {
-    
+    Route::get('/settings', function () {  return inertia('Home/Profile'); });
     Route::resource('qualifiers', App\Http\Controllers\Qualifier\IndexController::class);
     Route::resource('schools', App\Http\Controllers\SchoolController::class);
     Route::resource('events', App\Http\Controllers\EventController::class);

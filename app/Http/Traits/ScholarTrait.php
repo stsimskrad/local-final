@@ -9,6 +9,7 @@ use App\Models\Qualifier;
 use App\Models\ScholarStatus;
 use App\Models\SchoolCourseProspectus;
 use App\Models\ScholarEducation;
+use App\Models\ProfileAddress;
 use App\Http\Resources\Scholar\IndexResource;
 use App\Http\Resources\Scholar\EvaluationResource;
 
@@ -98,6 +99,15 @@ trait ScholarTrait { //Storing Scholar
             $request['is_completed'] = 1;
             $data->education()->update($request->except('id','editable','type'));
             $data->update($request->except('editable','type'));
+            if($request['school_id'] != '' && $request['course_id'] != '' && $request['level_id'] != ''){
+                $request['status_id'] = 31;
+                $data->update(array_merge($request->except('editable')));
+                $wew = ScholarStatus::create([
+                    'scholar_id' => $request->id,
+                    'status_id' => $request->status_id,
+                    'updated_by' => \Auth::user()->id,
+                ]);
+            }
             $data = Scholar::with('profile')->with('profile.address.municipality.province.region')->with('education.school.school','education.course')->where('id',$request->id)->first();
         }else{
             $request['status_id'] = 31;
@@ -144,6 +154,125 @@ trait ScholarTrait { //Storing Scholar
         $data =  Scholar::with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay','profile.user')
         ->with('program')->with('profile.user')->with('education.school.school','education.course')->where('profile_id',$request->id)->first();
         return new IndexResource($data);
+    }
+
+    public function api($request){
+        set_time_limit(0);
+        $result = \DB::transaction(function () use ($request){
+            $scholars = $request->users;
+            $users = array();
+            $success = array();
+            $failed = array();
+            $duplicate = array();
+        
+
+            foreach($scholars as $scholar){
+                
+                $count = Scholar::where('spas_id',$scholar['spas_id'])->count();
+                if($count == 0){
+
+                    $parents = [
+                        'mother' => 'n/a',
+                        'father' => 'n/a',
+                    ];
+
+                    $information = [
+                        'birth_place' => 'n/a',
+                        'course' => 'n/a',
+                        'school' => 'n/a',
+                        'address' => 'n/a',
+                        'level' => 'n/a',
+                        'parents' => $parents
+                    ];
+
+                    $user = [ 
+                        'is_completed' => 1,
+                        'email' => $scholar['profile']['email'],
+                        'firstname' => $scholar['profile']['firstname'],
+                        'middlename' => $scholar['profile']['middlename'],
+                        'lastname' => $scholar['profile']['lastname'],
+                        'suffix' => $scholar['profile']['suffix'],
+                        'gender' => $scholar['profile']['gender'],
+                        'mobile' => $scholar['profile']['mobile'],
+                        'birthday' => $scholar['profile']['birthday'],
+                        'information' => json_encode($information),
+                        'created_at'	=> now(),
+                        'updated_at'	=> now()
+                    ];
+
+                    \DB::beginTransaction();
+                    $profile = Profile::create($user);
+
+                    if($profile){            
+                        $haha = [
+                            'spas_id' => $scholar['spas_id'],
+                            'lrn' => $scholar['lrn'],
+                            'is_completed' => 1,
+                            'is_undergrad' => $scholar['is_undergrad'],
+                            'program_id' => $scholar['program']['id'],
+                            'status_id' =>  $scholar['status']['id'],
+                            'profile_id' => $profile->id,
+                            'old_id' =>  $scholar['id'],
+                            'awarded_year' =>  $scholar['awarded_year'],
+                            'created_at'	=> now(),
+                            'updated_at'	=> now()
+                        ];
+                        
+                        $q = Scholar::create($haha); 
+                        if($q){
+                            $is_completed = 1;
+
+                            $school = [
+                                'scholar_id' => $q->id,
+                                'course_id'=> $scholar['education']['course']['id'],
+                                'school_id'=> $scholar['education']['school']['id'],
+                                'level_id' => $scholar['education']['level']['id'],
+                                'created_at'	=> now(),
+                                'updated_at'	=> now(),
+                                'is_completed' => $is_completed
+                            ];
+                            $s = ScholarEducation::insertOrIgnore($school);
+
+                            $address = [
+                                'type' => 'Main',
+                                'profile_id' => $profile->id,
+                                'region_code'=> $scholar['address']['region_code'],
+                                'province_code'=> $scholar['address']['province_code'],
+                                'municipality_code'=> $scholar['address']['municipality_code'],
+                                'barangay_code'=> $scholar['address']['barangay_code'],
+                                'created_at'	=> now(),
+                                'updated_at'	=> now(),
+                                'is_completed' => 0
+                            ];
+                            $s = ProfileAddress::insertOrIgnore($address);
+                            // $address = $this->checkAddress($scholar['municipality'],$scholar['barangay'],$q->id);
+
+                            array_push($success,$scholar['id']);
+                            \DB::commit();
+                        }else{
+                            array_push($failed,$scholar['id']);
+                            \DB::rollback();
+                        }
+
+                    }else{
+                        array_push($failed,$scholar['id']);
+                        \DB::rollback();
+                    }
+                }else{
+                    array_push($duplicate,$scholar['id']);
+                }
+            }
+
+            $result = [
+                'success' => $success,
+                'failed' => $failed,
+                'duplicate' => $duplicate,
+            ];
+            return $result;
+        });
+        return $result;
+
+
     }
 
 }
