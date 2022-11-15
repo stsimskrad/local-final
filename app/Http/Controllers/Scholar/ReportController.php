@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Scholar;
 
-use App\Models\Group;
 use App\Models\Scholar;
 use App\Models\ListAgency;
 use App\Models\ListProgram;
@@ -40,8 +39,7 @@ class ReportController extends Controller
         $agency_id = config('app.agency');
         $agency = ListAgency::with('region')->where('id',$agency_id)->first();
 
-        $group = Group::with('semester')->where('is_active',1)->orderBy('created_at','DESC')->first();
-
+     
         $data = Scholar::with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay','profile.user')
         ->with('program')->with('profile.user')->with('education.school.school','education.course')
         ->where('is_completed',1)
@@ -57,8 +55,7 @@ class ReportController extends Controller
 
         $array = [
             'scholars' => $scholars,
-            'agency' => $agency,
-            'group' => $group
+            'agency' => $agency
         ];
 
         if($info->type == 'scholars'){

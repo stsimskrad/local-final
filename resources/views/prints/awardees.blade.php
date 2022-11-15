@@ -36,8 +36,8 @@
             $awards = json_encode($awards); 
             $awards = json_decode($awards, true); 
             
-            $group = json_encode($group); 
-            $group = json_decode($group, true); 
+            // $group = json_encode($group); 
+            // $group = json_decode($group, true); 
         ?>
       
       <!-- Arial, Helvetica, sans-serif -->
@@ -50,7 +50,7 @@
             <center style="font-size: 11px;">DOST - {{ strtoupper($agency['region']['region'])}}</center>
             <br>
             <center style="font-size: 14px; font-weight: bold;">LIST OF DOST-SEI GRADUATES W/ HONORS</center>
-            <center style="font-size: 10px;">(AS OF {{ strtoupper($group['semester']['name'])}} - AY {{ strtoupper($group['academic_year'])}})</center>
+          
         </div>
 
         <table style="width:100%; font-size: 12px; padding: 10px; margin-top: 10px; font-family:Arial, Helvetica, sans-serif">

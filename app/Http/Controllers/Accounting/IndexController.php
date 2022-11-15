@@ -72,9 +72,24 @@ class IndexController extends Controller
         return AllotmentResource::collection($data);
     }
 
-    public function create(){
-        $year = 2020;
-        $quater = 1;
+    public function create(Request $request){
+        $year = date('Y',strtotime($request->year));
+        $quater = $request->quarter;
+
+        switch($quater){
+            case '1st Quarter': 
+                $quater = 1;
+            break;
+            case '2nd Quarter': 
+                $quater = 2;
+            break;
+            case '3rd Quarter': 
+                $quater = 3;
+            break;
+            case '4th Quarter': 
+                $quater = 4;
+            break;
+        }
         
         $expenses = ListExpense::
         with(["allotments" => function($query) use ($year){

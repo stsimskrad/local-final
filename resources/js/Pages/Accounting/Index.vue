@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body" :style="{ height: height + 'px' }">
                 <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
-                    <b-tab active title="Home" style="color: black;">
+                    <b-tab active title="Financial Reports" style="color: black;">
                         <b-card-text>
                             <Report />
                         </b-card-text>
@@ -19,6 +19,11 @@
                             <Disbursement :expenses="expenses" :counts="count4"/>
                         </b-card-text>
                     </b-tab>
+                    <!-- <b-tab title="Financial Reports">
+                        <b-card-text>
+                            <Financial />
+                        </b-card-text>
+                    </b-tab> -->
                 </b-tabs>
             </div>
         </div>
@@ -30,8 +35,9 @@ import Header from "@/Shared/Header.vue";
 import Report from "./Report.vue";
 import Allotment from "./Allotment/Index.vue";
 import Disbursement from "./Disbursement/Index.vue";
+import Financial from "./Financial.vue";
 export default {
-    components: { Header, Allotment, Disbursement, Report },
+    components: { Header, Allotment, Disbursement, Report, Financial },
     inject: ['height','count4'],
     props: ['dropdowns','expenses'],
     data() {

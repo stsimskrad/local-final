@@ -30,8 +30,8 @@
             $agency = json_encode($agency); 
             $agency = json_decode($agency, true);   
 
-            $group = json_encode($group); 
-            $group = json_decode($group, true);  
+            // $group = json_encode($group); 
+            // $group = json_decode($group, true);  
         ?>
       
 
@@ -44,8 +44,7 @@
             <center style="font-size: 11px;">DOST - {{ strtoupper($agency['region']['region'])}}</center>
             <br>
             <center style="font-size: 14px; font-weight: bold;">LIST OF DOST-SEI SCHOLAR-GRADUATES</center>
-            <center style="font-size: 10px;">(AS OF {{ strtoupper($group['semester']['name'])}} - AY {{ strtoupper($group['academic_year'])}})</center>
-        </div>
+            
 
         <table style="width:100%; font-size: 10px; padding: 20px; font-family:Arial, Helvetica, sans-serif">
             <thead>
