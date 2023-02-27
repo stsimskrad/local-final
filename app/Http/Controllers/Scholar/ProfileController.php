@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Scholar;
 
 use Hashids\Hashids;
 use App\Models\Scholar;
+use App\Models\Profile;
 use App\Models\ScholarEnrollment;
 use App\Models\BenefitList;
 use App\Models\BenefitRelease;
@@ -19,7 +20,7 @@ class ProfileController extends Controller
     public function index($id,$type){
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($id);
-        $data = new IndexResource(Scholar::with('profile','education.school','profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay')->where('id',$id)->first());
+        $data = new IndexResource(Profile::with('scholar.education.school','address.region','address.province','address.municipality','address.barangay')->where('id',$id)->first());
 
         switch($type){
             case 'profile':

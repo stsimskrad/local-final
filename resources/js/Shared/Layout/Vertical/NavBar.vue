@@ -134,7 +134,7 @@
                     toggle-class="header-item noti-icon" variant="black">
                     <template v-slot:button-content>
                         <i class="bx bx-bell bx-tada"></i>
-                        <span class="badge bg-danger rounded-pill">test</span>
+                        <span class="badge bg-danger rounded-pill">0</span>
                     </template>
 
                     <div class="p-3">
@@ -143,7 +143,7 @@
                                 <h6 class="m-0">tssest</h6>
                             </div>
                             <div class="col-auto">
-                                <a href="#" class="small">test2</a>
+                                <a href="#" class="small">test!!</a>
                             </div>
                         </div>
                     </div>

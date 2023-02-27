@@ -32,9 +32,9 @@ createInertiaApp({
                     height: window.innerHeight - 170,
                     height2: window.innerHeight - 150
                 },
-                // mounted() {
-                //     (window.User.role == 'Scholar') ? this.mixinMethod('horizontal'): this.mixinMethod('vertical');
-                // }
+                mounted() {
+                    (window.User.role == 'Scholar') ? this.mixinMethod('horizontal'): this.mixinMethod('vertical');
+                }
             })
             .use(plugin)
             .use(BootstrapVue3, VueToast)

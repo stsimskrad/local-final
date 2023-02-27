@@ -25,7 +25,7 @@
 
             <div class="card mt-n2">
                 <div class="card-body" style="height: 440px;">
-                    <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
+                    <b-tabs pills nav-class="bg-light rounded nav-justified" content-class="mt-3" small>
                         <b-tab active title="Home" style="color: black;">
                             <b-card-text>
                                 <Home />

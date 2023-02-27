@@ -8,13 +8,13 @@
                 <div class="row">
                     <div class="col-xl-6">
                         <Link href="scholars/sync"> 
-                            <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Sync</button>
+                            <button type="button" v-b-tooltip.hover title="Sync scholar" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Sync</button>
                         </Link>
                         <Link href="scholars/import">
-                            <button type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Import</button>
+                            <button v-b-tooltip.hover title="Import Scholar" type="button" class="btn btn-sm w-sm mb-n3 me-1 btn-outline-light">Import</button>
                         </Link>
                         <Link href="scholars/report">
-                            <button type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Reports</button>
+                            <button v-b-tooltip.hover title="View Reports" type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Reports</button>
                         </Link>
                     </div>
                     <div class="col-xl-6">
@@ -43,29 +43,29 @@
                                 <option :value="stat" v-for="stat in statuses" v-bind:key="stat.id">{{ stat.name }}</option>
                             </select>
                             <input type="text" class="form-control" style="width: 100px;" placeholder="Enter Year" v-model="year"  @keyup="fetch()"/>
-                            <label style="cursor: pointer;" @click="openf=openFilter('location')" class="input-group-text bg-light"> <i class='bx bxs-map' :class="(Object.keys(this.arr).length > 0) ? 'bx-flashing text-primary' : ''"></i></label>
-                            <label style="cursor: pointer;" @click="openFilter('education')" class="input-group-text bg-light"> <i class='bx bxs-graduation' :class="(Object.keys(this.arr2).length > 0) ? 'bx-flashing text-primary' : ''"></i></label>
+                            <label v-b-tooltip.hover title="Filter Location" style="cursor: pointer;" @click="openf=openFilter('location')" class="input-group-text bg-light"> <i class='bx bxs-map' :class="(Object.keys(this.arr).length > 0) ? 'bx-flashing text-primary' : ''"></i></label>
+                            <label v-b-tooltip.hover title="Filter Education" style="cursor: pointer;" @click="openFilter('education')" class="input-group-text bg-light"> <i class='bx bxs-graduation' :class="(Object.keys(this.arr2).length > 0) ? 'bx-flashing text-primary' : ''"></i></label>
                         </div>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-centered table-nowrap">
+                    <table class="table table-centered table-nowrap" style="table-layout: fixed;">
                         <thead class="thead-light">
                             <tr class="font-size-11">
-                                <th style="width: 2%;"></th>
-                                <th>Name</th>
-                                <th class="text-center">Program </th>
-                                <th class="text-center">Education</th>
-                                <th class="text-center">Awarded Year</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-end">
-                                    <i class='bx bx-filter h3' style="position: absolute; margin-top: -20px; margin-left: -33px; cursor: pointer;"></i>
+                                <th style="width: 4%; cursor: pointer;" @click="sort(this.sorty)"><center><i class='bx bxs-sort-alt' style="font-size: 15px;"></i></center></th>
+                                <th style="width: 29%">Name</th>
+                                <th style="width: 12%" class="text-center">Program </th>
+                                <th style="width: 25%" class="text-center">Education</th>
+                                <th style="width: 11%" class="text-center">Awarded Year</th>
+                                <th style="width: 11%" class="text-center">Status</th>
+                                <th style="width: 10%" class="text-end">
+                                    
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="align-middle">
-                            <tr v-for="user in lists" v-bind:key="user.id" style="cursor: pointer;" :class="[(user.is_completed == 0) ? 'table-warnings' : '']">
+                            <tr v-for="user in lists" v-bind:key="user.id" :class="[(user.is_completed == 0) ? 'table-warnings' : '']">
                                 <td>
                                     <div class="avatar-xs" v-if="user.profile.avatar == 'n/a'">
                                         <span class="avatar-title rounded-circle">{{user.profile.lastname.charAt(0)}}</span>
@@ -94,10 +94,10 @@
                                     <span v-else :class="'badge badge-pill badge-soft-'+user.status.color">{{user.status.name}}</span>
                                 </td>
                                 <td class="text-end">
-                                    <button type="button" @click="addUser(user)" class="bg-light btn btn-light me-1" v-if="user.user == null"><i class='bx text-primary bxs-user-plus'></i></button>
-                                    <button type="button" @click="openFilter('update',user)" class="bg-light btn btn-light me-1" v-if="user.is_completed == 0"><i class='bx text-warning bxs-info-circle'></i></button>
+                                    <button v-b-tooltip.hover title="Create Scholar Account" type="button" @click="addUser(user)" class="bg-light btn btn-light me-1" v-if="user.user == null"><i class='bx text-primary bxs-user-plus'></i></button>
+                                    <button v-b-tooltip.hover title="Update Scholar Information" type="button" @click="openFilter('update',user)" class="bg-light btn btn-light me-1" v-if="user.is_completed == 0"><i class='bx text-warning bxs-info-circle'></i></button>
                                     <Link :href="`/scholars/${user.code}`">
-                                        <button type="button" class="bg-soft-info btn btn-light" style="margin-end: -10px;">
+                                        <button v-b-tooltip.hover title="View Profile" type="button" class="bg-soft-info btn btn-light" style="margin-end: -10px;">
                                             <span class="d-none d-sm-inline-block">  <i class='bx bx-user-circle'></i></span>
                                         </button>
                                     </Link>                              
@@ -156,6 +156,7 @@ export default {
             arr2: {},
             show: false,
             is_undergrad : 'all',
+            sorty: 'asc'
         };
     },
     watch: {
@@ -194,7 +195,8 @@ export default {
                 'program' : (this.program ==  null) ? null : this.program.id, 
                 'year' : (this.year === '' || this.year == null) ? '' : this.year,
                 'is_undergrad' : this.is_undergrad,
-                'counts' : this.count2
+                'counts' : this.count2,
+                'sorty' : this.sorty
             };
 
             info = (Object.keys(info).length == 0) ? '-' : JSON.stringify(info);
@@ -216,6 +218,12 @@ export default {
                 this.links = response.data.links;
             })
             .catch(err => console.log(err));
+        },
+
+        sort(data){
+            console.log(data);
+            this.sorty = (data == 'asc') ? 'desc' : 'asc'; 
+            this.fetch();
         },
 
         filter(data,name,type){
@@ -247,6 +255,7 @@ export default {
         openFilter(type,val = null){
             this.$refs[type].set(val);
             this.editable = type;
+            console.log(val);
         },
         
         addUser(user){

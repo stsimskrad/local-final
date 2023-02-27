@@ -28,7 +28,7 @@
                 <div class="col-sm-12"><hr></div>
                 <div class="col-sm-3">
                     <h6 class="text-muted font-size-11 mb-0"><i class="bx bx-mail-send me-1 text-primary"></i>Email</h6>
-                    <p class="fw-bold text-dark mb-0">{{user.data.profile.email}}</p>
+                    <p class="fw-bold text-dark mb-0">{{(user.data.profile.email) ? user.data.profile.email : 'Email not set.'}}</p>
                 </div>
                 <div class="col-sm-3">
                     <h6 class="text-muted font-size-11 mb-0"><i class="bx bx-phone me-1 text-primary"></i>Mobile</h6>
